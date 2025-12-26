@@ -3,31 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Boost Sosial Media</title>
+<title>Social Media Boost</title>
 
 <style>
 :root{
-  --gold:#ffcc66;
-  --dark:#0b0b15;
+  --gold:#ffd27d;
+  --dark:#0a0a12;
 }
 *{box-sizing:border-box}
 
 body{
   margin:0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background:
-    radial-gradient(circle at top, #2c2c54, #0b0b15 70%);
+  font-family:'Segoe UI',Arial,sans-serif;
+  background:radial-gradient(circle at top,#1f1f3a,#0a0a12 70%);
   color:#fff;
   overflow-x:hidden;
 }
 
-/* ===== OVERLAY ===== */
+/* OVERLAY */
 .overlay{
   position:fixed;
   inset:0;
-  background:
-    linear-gradient(180deg,rgba(0,0,0,.95),rgba(0,0,0,.9)),
-    url("f1.jpg") center/cover;
+  background:linear-gradient(180deg,rgba(0,0,0,.96),rgba(0,0,0,.9));
   display:flex;
   align-items:center;
   justify-content:center;
@@ -36,33 +33,32 @@ body{
   z-index:99;
 }
 .overlay h2{
-  font-size:36px;
-  letter-spacing:1px;
+  font-size:34px;
+  margin-bottom:6px;
 }
 .overlay span{
   opacity:.75;
-  margin-top:6px;
 }
 .overlay button{
-  margin-top:28px;
-  padding:14px 36px;
+  margin-top:26px;
+  padding:14px 38px;
   border:none;
   border-radius:40px;
   font-size:16px;
   font-weight:600;
   cursor:pointer;
-  background:linear-gradient(45deg,var(--gold),#ffd98e);
+  background:linear-gradient(45deg,var(--gold),#ffe7b0);
   color:#000;
-  box-shadow:0 10px 30px rgba(255,204,102,.4);
+  box-shadow:0 12px 30px rgba(255,210,125,.45);
 }
 
-/* ===== MAIN ===== */
+/* MAIN */
 .container{
   max-width:760px;
   margin:auto;
   padding:22px;
   opacity:0;
-  transform:translateY(50px);
+  transform:translateY(40px);
   transition:1.2s ease;
 }
 .show{
@@ -70,40 +66,51 @@ body{
   transform:none;
 }
 
+/* HERO */
 .hero{
   text-align:center;
   margin-top:10px;
 }
 .hero h1{
-  font-size:34px;
+  font-size:32px;
   margin-bottom:12px;
 }
 .hero p{
-  opacity:.8;
   font-size:15px;
+  opacity:.85;
 }
 
-/* ===== IMAGE SECTION ===== */
-.section{
-  margin-top:40px;
+/* TRUST */
+.trust{
+  text-align:center;
+  font-size:14px;
+  opacity:.65;
+  margin:22px 0 30px;
 }
+
+/* IMAGES */
 .section img{
   width:100%;
   border-radius:18px;
   margin-bottom:22px;
   box-shadow:
     0 25px 60px rgba(0,0,0,.55),
-    inset 0 0 0 1px rgba(255,255,255,.04);
-  transition:transform .6s ease, box-shadow .6s ease;
+    inset 0 0 0 1px rgba(255,255,255,.05);
+  opacity:0;
+  transform:translateY(40px) scale(.97);
+  transition:1s ease;
+}
+.section img.show-img{
+  opacity:1;
+  transform:none;
 }
 .section img:hover{
-  transform:scale(1.04);
   box-shadow:
-    0 35px 80px rgba(0,0,0,.7),
-    0 0 40px rgba(255,204,102,.15);
+    0 35px 90px rgba(0,0,0,.7),
+    0 0 45px rgba(255,210,125,.15);
 }
 
-/* ===== CTA ===== */
+/* CTA */
 .cta{
   margin:60px 0 40px;
   text-align:center;
@@ -114,10 +121,9 @@ body{
 }
 .cta a{
   display:inline-block;
-  padding:16px 38px;
+  padding:16px 40px;
   border-radius:50px;
-  background:
-    linear-gradient(45deg,#25D366,#7CFFB2);
+  background:linear-gradient(45deg,#25D366,#7CFFB2);
   color:#000;
   font-weight:700;
   text-decoration:none;
@@ -125,7 +131,7 @@ body{
   animation:pulse 1.4s infinite;
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer{
   text-align:center;
   font-size:12px;
@@ -133,10 +139,9 @@ footer{
   margin-bottom:25px;
 }
 
-/* ===== ANIM ===== */
 @keyframes pulse{
   0%{transform:scale(1)}
-  50%{transform:scale(1.07)}
+  50%{transform:scale(1.06)}
   100%{transform:scale(1)}
 }
 </style>
@@ -158,36 +163,49 @@ footer{
 <div class="container" id="main">
 
   <div class="hero">
-    <h1>Naikin Performa Sosial Mediamu</h1>
-    <p>Biar keliatan rame, hidup, dan lebih dipercaya</p>
+    <h1>Upgrade Tampilan Sosial Mediamu</h1>
+    <p>Biar akunmu keliatan lebih hidup, rapi, nyaman dilihat, dan makin dipercaya.</p>
   </div>
 
+  <div class="trust">
+    Simpel • Aman • Praktis
+  </div>
+
+  <!-- FOTO (INSTAGRAM PALING ATAS) -->
   <div class="section">
+
+    <!-- INSTAGRAM -->
+    <img src="instagram1.jpg">
+    <img src="instagram2.jpg">
+
+    <!-- F -->
     <img src="f1.jpg">
     <img src="f2.jpg">
     <img src="f3.jpg">
 
-    <img src="instagram1.jpg">
-    <img src="instagram2.jpg">
-
+    <!-- T -->
     <img src="t1.jpg">
     <img src="t2.jpg">
     <img src="t3.jpg">
     <img src="t4.jpg">
 
+    <!-- X -->
     <img src="x1.jpg">
     <img src="x2.jpg">
 
+    <!-- Y -->
     <img src="y1.jpg">
     <img src="y2.jpg">
     <img src="y3.jpg">
 
+    <!-- O2 LALU O1 -->
     <img src="o2.jpg">
     <img src="o1.jpg">
+
   </div>
 
   <div class="cta">
-    <p>Siap bikin akunmu keliatan lebih bernilai?</p>
+    <p>Tinggal pilih paketnya, sisanya biar kami yang urus.</p>
     <a href="https://wa.me/6283124910460" target="_blank">
       Chat WhatsApp Sekarang
     </a>
@@ -200,11 +218,40 @@ footer{
 </div>
 
 <script>
+const overlay = document.getElementById("overlay");
+const main = document.getElementById("main");
+const music = document.getElementById("music");
+const images = document.querySelectorAll(".section img");
+
 function start(){
-  document.getElementById("overlay").style.display="none";
-  document.getElementById("main").classList.add("show");
-  document.getElementById("music").play();
+  overlay.style.display = "none";
+  main.classList.add("show");
+
+  music.volume = 0.4;
+  music.play();
+
+  let vol = 0.4;
+  let up = true;
+  setInterval(() => {
+    if (up) {
+      vol += 0.02;
+      if (vol >= 0.6) up = false;
+    } else {
+      vol -= 0.02;
+      if (vol <= 0.4) up = true;
+    }
+    music.volume = vol;
+  }, 1200);
 }
+
+window.addEventListener("scroll", () => {
+  images.forEach(img => {
+    const rect = img.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 80) {
+      img.classList.add("show-img");
+    }
+  });
+});
 </script>
 
 </body>
