@@ -3,232 +3,194 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jasa Sosmed Premium</title>
+<title>Premium Boost Service</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif}
-body{
-  background:radial-gradient(circle at top,#2a2a2a,#050505);
-  color:#fff;
-  overflow-x:hidden;
-}
-.container{max-width:1400px;margin:auto;padding:20px}
+* { box-sizing: border-box; }
 
-/* HERO */
-.hero{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-}
-.hero h1{
-  font-size:52px;
-}
-.hero span{
-  background:linear-gradient(135deg,#ffd700,#ff9f00,#ff5e00);
-  -webkit-background-clip:text;
-  color:transparent;
-}
-.hero p{
-  opacity:.85;
-  margin-top:18px;
-  max-width:620px;
-  font-size:18px;
-}
-.hero a{
-  margin-top:40px;
-  padding:18px 42px;
-  border-radius:60px;
-  background:linear-gradient(135deg,#25D366,#1ebc59);
-  color:#fff;
-  font-weight:bold;
-  text-decoration:none;
-  box-shadow:0 25px 60px rgba(37,211,102,.6);
-  animation:pulse 2s infinite;
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, #111, #000);
+  color: #fff;
+  overflow-x: hidden;
 }
 
-/* TITLE */
-.title{
-  text-align:center;
-  margin:100px 0 45px;
-}
-.title h2{font-size:36px}
-.title p{opacity:.65}
-
-/* GRID */
-.section{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:28px;
-}
-.card{
-  position:relative;
-  overflow:hidden;
-  border-radius:26px;
-  box-shadow:0 30px 80px rgba(0,0,0,.75);
-  opacity:0;
-  transform:translateY(60px);
-  transition:1s ease;
-}
-.card.show{
-  opacity:1;
-  transform:none;
-}
-.card img{
-  width:100%;
-  display:block;
-  transition:.9s ease;
-}
-.card:hover img{
-  transform:scale(1.15);
-}
-.overlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to top,rgba(0,0,0,.7),transparent);
+.container {
+  max-width: 720px;
+  margin: auto;
+  padding: 18px;
 }
 
-/* TRUST */
-.trust{
-  margin:130px 0;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:30px;
-}
-.trust div{
-  background:rgba(255,255,255,.06);
-  backdrop-filter:blur(12px);
-  padding:34px;
-  border-radius:24px;
-  text-align:center;
-}
-.trust h3{color:#ffd700}
-
-/* FINAL CTA */
-.final{
-  text-align:center;
-  margin:140px 0 90px;
-}
-.final h2{font-size:38px}
-.final p{opacity:.7}
-.final a{
-  display:inline-block;
-  margin-top:34px;
-  padding:20px 46px;
-  border-radius:70px;
-  background:linear-gradient(135deg,#ffd700,#ff9f00,#ff5e00);
-  color:#000;
-  font-weight:bold;
-  text-decoration:none;
+/* IMAGE STYLE */
+.img-box {
+  position: relative;
+  margin-bottom: 20px;
+  animation: float 6s ease-in-out infinite;
 }
 
-/* FLOAT WA */
-.whatsapp{
-  position:fixed;
-  bottom:22px;
-  right:22px;
-  background:#25D366;
-  color:#fff;
-  padding:18px 28px;
-  border-radius:60px;
-  font-weight:bold;
-  text-decoration:none;
-  z-index:999;
+.img-box img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0,0,0,.7);
 }
 
-/* ANIM */
-@keyframes pulse{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.1)}
-  100%{transform:scale(1)}
+/* FLOAT ANIMATION */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+/* HEADER TEXT */
+.hero {
+  text-align: center;
+  margin: 30px 0 40px;
+}
+
+.hero h1 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  opacity: .8;
+  font-size: 15px;
+}
+
+/* SOUND OVERLAY */
+.tap-sound {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, rgba(0,0,0,.9), #000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.tap-box {
+  text-align: center;
+  animation: pulse 1.5s infinite;
+}
+
+.tap-box h2 {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+.tap-box span {
+  opacity: .7;
+  font-size: 14px;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* TRUST TEXT */
+.trust {
+  text-align: center;
+  opacity: .75;
+  font-size: 14px;
+  margin: 30px 0;
+}
+
+/* WHATSAPP BUTTON */
+.whatsapp {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  background: linear-gradient(135deg,#25D366,#1ebe5d);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 60px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(0,0,0,.6);
+  animation: pulse 2s infinite;
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 AUTO PLAY MUSIC (MUTED) -->
-<audio id="bgMusic" autoplay loop muted>
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
   <source src="carol.mp3" type="audio/mpeg">
 </audio>
 
+<!-- TAP SOUND -->
+<div class="tap-sound" id="tapSound">
+  <div class="tap-box">
+    <h2>🔊 Tap to feel the vibe</h2>
+    <span>Biar makin kerasa 😉</span>
+  </div>
+</div>
+
 <div class="container">
 
-<div class="hero">
-  <h1>Bikin Sosmed Kamu <span>Naik Level</span></h1>
-  <p>Scroll santai, pilih paket, dengerin vibes. Tinggal chat, beres 🔥</p>
-  <a href="https://wa.me/6283124910460" target="_blank">
-    Gas Order WhatsApp
-  </a>
-</div>
+  <div class="hero">
+    <h1>Naikin Performa Sosial Media</h1>
+    <p>Lebih rame • Lebih hidup • Lebih dipercaya</p>
+  </div>
 
-<div class="title">
-  <h2>Paket & Harga</h2>
-  <p>Pilih yang cocok, harga ada di gambar</p>
-</div>
+  <!-- IMAGE ORDER -->
+  <div class="img-box"><img src="f1.jpg"></div>
+  <div class="img-box"><img src="f2.jpg"></div>
+  <div class="img-box"><img src="f3.jpg"></div>
 
-<div class="section">
-  <div class="card"><img src="f1.jpg"><div class="overlay"></div></div>
-  <div class="card"><img src="f2.jpg"><div class="overlay"></div></div>
-  <div class="card"><img src="f3.jpg"><div class="overlay"></div></div>
+  <div class="img-box"><img src="instagram1.jpg"></div>
+  <div class="img-box"><img src="instagram2.jpg"></div>
 
-  <div class="card"><img src="instagram1.jpg"><div class="overlay"></div></div>
-  <div class="card"><img src="instagram2.jpg"><div class="overlay"></div></div>
+  <div class="img-box"><img src="t1.jpg"></div>
+  <div class="img-box"><img src="t2.jpg"></div>
+  <div class="img-box"><img src="t3.jpg"></div>
+  <div class="img-box"><img src="t4.jpg"></div>
 
-  <div class="card"><img src="x1.jpg"><div class="overlay"></div></div>
-  <div class="card"><img src="x2.jpg"><div class="overlay"></div></div>
+  <div class="img-box"><img src="x1.jpg"></div>
+  <div class="img-box"><img src="x2.jpg"></div>
 
-  <div class="card"><img src="y1.jpg"><div class="overlay"></div></div>
-  <div class="card"><img src="y2.jpg"><div class="overlay"></div></div>
-  <div class="card"><img src="y3.jpg"><div class="overlay"></div></div>
+  <div class="img-box"><img src="y1.jpg"></div>
+  <div class="img-box"><img src="y2.jpg"></div>
+  <div class="img-box"><img src="y3.jpg"></div>
 
-  <div class="card"><img src="t1.jpg"><div class="overlay"></div></div>
-  <div class="card"><img src="t2.jpg"><div class="overlay"></div></div>
-  <div class="card"><img src="t3.jpg"><div class="overlay"></div></div>
-  <div class="card"><img src="t4.jpg"><div class="overlay"></div></div>
+  <!-- O2 THEN O1 -->
+  <div class="img-box"><img src="o2.jpg"></div>
+  <div class="img-box"><img src="o1.jpg"></div>
 
-  <div class="card"><img src="o2.jpg"><div class="overlay"></div></div>
-  <div class="card"><img src="o1.jpg"><div class="overlay"></div></div>
-</div>
-
-<div class="final">
-  <h2>Udah Cocok?</h2>
-  <p>Tinggal chat, kita langsung gas 🚀</p>
-  <a href="https://wa.me/6283124910460" target="_blank">
-    Chat WhatsApp
-  </a>
-</div>
+  <div class="trust">
+    Fast respon • Aman • Banyak yang repeat order
+  </div>
 
 </div>
 
 <a class="whatsapp" href="https://wa.me/6283124910460" target="_blank">
-WhatsApp
+Chat WhatsApp
 </a>
 
 <script>
-/* ANIM CARD */
-const cards=document.querySelectorAll('.card');
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-    }
-  });
-},{threshold:.25});
-cards.forEach(card=>observer.observe(card));
+const overlay = document.getElementById("tapSound");
+const music = document.getElementById("bgMusic");
 
-/* AUTO UNMUTE ON INTERACTION */
-const music=document.getElementById("bgMusic");
-function enableSound(){
-  music.muted=false;
-  music.volume=0.6;
-  document.removeEventListener("click",enableSound);
-  document.removeEventListener("scroll",enableSound);
-}
-document.addEventListener("click",enableSound);
-document.addEventListener("scroll",enableSound);
+overlay.addEventListener("click", () => {
+  music.volume = 0;
+  music.play();
+  overlay.style.display = "none";
+
+  let vol = 0;
+  const fade = setInterval(() => {
+    if (vol < 1) {
+      vol += 0.05;
+      music.volume = vol;
+    } else {
+      clearInterval(fade);
+    }
+  }, 150);
+});
 </script>
 
 </body>
