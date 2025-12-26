@@ -3,13 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Social Media Boost</title>
+<title>Naik Level Sosial Media</title>
 
 <style>
-:root{
-  --gold:#ffd27d;
-  --dark:#0a0a12;
-}
+:root{--gold:#ffd27d}
 *{box-sizing:border-box}
 
 body{
@@ -17,14 +14,15 @@ body{
   font-family:'Segoe UI',Arial,sans-serif;
   background:radial-gradient(circle at top,#1f1f3a,#0a0a12 70%);
   color:#fff;
-  overflow-x:hidden;
 }
 
 /* OVERLAY */
 .overlay{
   position:fixed;
   inset:0;
-  background:linear-gradient(180deg,rgba(0,0,0,.96),rgba(0,0,0,.9));
+  background:
+    radial-gradient(circle at top,rgba(255,210,125,.15),transparent 45%),
+    linear-gradient(180deg,#000,#0a0a12);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -32,24 +30,27 @@ body{
   text-align:center;
   z-index:99;
 }
-.overlay h2{
+
+.overlay h1{
   font-size:34px;
-  margin-bottom:6px;
+  margin-bottom:14px;
+  background:linear-gradient(45deg,#fff,#ffd27d);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:float 3s ease-in-out infinite;
 }
-.overlay span{
-  opacity:.75;
-}
+
+.overlay p{opacity:.8}
+
 .overlay button{
-  margin-top:26px;
-  padding:14px 38px;
+  margin-top:30px;
+  padding:16px 46px;
   border:none;
-  border-radius:40px;
-  font-size:16px;
-  font-weight:600;
+  border-radius:60px;
+  font-weight:700;
+  background:linear-gradient(120deg,#ffd27d,#ffb347,#ffd27d);
   cursor:pointer;
-  background:linear-gradient(45deg,var(--gold),#ffe7b0);
-  color:#000;
-  box-shadow:0 12px 30px rgba(255,210,125,.45);
+  animation:breath 2.4s ease-in-out infinite;
 }
 
 /* MAIN */
@@ -61,84 +62,49 @@ body{
   transform:translateY(40px);
   transition:1.2s ease;
 }
-.show{
-  opacity:1;
-  transform:none;
-}
+.show{opacity:1;transform:none}
 
-/* HERO */
-.hero{
-  text-align:center;
-  margin-top:10px;
-}
-.hero h1{
-  font-size:32px;
-  margin-bottom:12px;
-}
-.hero p{
-  font-size:15px;
-  opacity:.85;
-}
+.hero{text-align:center;margin-top:20px}
+.hero h2{font-size:30px}
+.hero span{opacity:.85}
 
-/* TRUST */
-.trust{
-  text-align:center;
-  font-size:14px;
-  opacity:.65;
-  margin:22px 0 30px;
-}
+.trust{text-align:center;opacity:.6;margin:26px 0}
 
-/* IMAGES */
 .section img{
   width:100%;
   border-radius:18px;
   margin-bottom:22px;
-  box-shadow:
-    0 25px 60px rgba(0,0,0,.55),
-    inset 0 0 0 1px rgba(255,255,255,.05);
   opacity:0;
-  transform:translateY(40px) scale(.97);
+  transform:translateY(40px);
   transition:1s ease;
+  box-shadow:0 25px 60px rgba(0,0,0,.55);
 }
-.section img.show-img{
-  opacity:1;
-  transform:none;
-}
-.section img:hover{
-  box-shadow:
-    0 35px 90px rgba(0,0,0,.7),
-    0 0 45px rgba(255,210,125,.15);
-}
+.section img.show-img{opacity:1;transform:none}
 
-/* CTA */
-.cta{
-  margin:60px 0 40px;
-  text-align:center;
-}
-.cta p{
-  opacity:.75;
-  margin-bottom:18px;
-}
+.cta{text-align:center;margin:60px 0}
 .cta a{
   display:inline-block;
-  padding:16px 40px;
+  padding:16px 42px;
   border-radius:50px;
   background:linear-gradient(45deg,#25D366,#7CFFB2);
   color:#000;
   font-weight:700;
   text-decoration:none;
-  box-shadow:0 15px 40px rgba(37,211,102,.45);
   animation:pulse 1.4s infinite;
 }
 
-/* FOOTER */
-footer{
-  text-align:center;
-  font-size:12px;
-  opacity:.45;
-  margin-bottom:25px;
-}
+footer{text-align:center;opacity:.45;font-size:12px;margin-bottom:26px}
 
+@keyframes float{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+  100%{transform:translateY(0)}
+}
+@keyframes breath{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.08)}
+  100%{transform:scale(1)}
+}
 @keyframes pulse{
   0%{transform:scale(1)}
   50%{transform:scale(1.06)}
@@ -149,108 +115,73 @@ footer{
 
 <body>
 
-<!-- OVERLAY -->
 <div class="overlay" id="overlay">
-  <h2>Selamat Datang</h2>
-  <span>Kamu ada di tempat yang tepat</span>
+  <h1>Hai, waktunya bikin akunmu naik level 🔥</h1>
+  <p>Biar tampilan makin rapi, menarik, dan bikin orang percaya dari detik pertama.</p>
   <button onclick="start()">Masuk</button>
 </div>
 
-<!-- MUSIC -->
 <audio id="music" src="carol.mp3" loop></audio>
 
-<!-- MAIN -->
 <div class="container" id="main">
-
   <div class="hero">
-    <h1>Upgrade Tampilan Sosial Mediamu</h1>
-    <p>Biar akunmu keliatan lebih hidup, rapi, nyaman dilihat, dan makin dipercaya.</p>
+    <h2>Upgrade Tampilan Sosial Mediamu</h2>
+    <span>Biar akunmu keliatan lebih hidup, rapi, nyaman dilihat, dan makin dipercaya.</span>
   </div>
 
-  <div class="trust">
-    Simpel • Aman • Praktis
-  </div>
+  <div class="trust">Simpel • Aman • Praktis</div>
 
-  <!-- FOTO (INSTAGRAM PALING ATAS) -->
   <div class="section">
-
-    <!-- INSTAGRAM -->
     <img src="instagram1.jpg">
     <img src="instagram2.jpg">
-
-    <!-- F -->
-    <img src="f1.jpg">
-    <img src="f2.jpg">
-    <img src="f3.jpg">
-
-    <!-- T -->
-    <img src="t1.jpg">
-    <img src="t2.jpg">
-    <img src="t3.jpg">
-    <img src="t4.jpg">
-
-    <!-- X -->
-    <img src="x1.jpg">
-    <img src="x2.jpg">
-
-    <!-- Y -->
-    <img src="y1.jpg">
-    <img src="y2.jpg">
-    <img src="y3.jpg">
-
-    <!-- O2 LALU O1 -->
-    <img src="o2.jpg">
-    <img src="o1.jpg">
-
+    <img src="f1.jpg"><img src="f2.jpg"><img src="f3.jpg">
+    <img src="t1.jpg"><img src="t2.jpg"><img src="t3.jpg"><img src="t4.jpg">
+    <img src="x1.jpg"><img src="x2.jpg">
+    <img src="y1.jpg"><img src="y2.jpg"><img src="y3.jpg">
+    <img src="o2.jpg"><img src="o1.jpg">
   </div>
 
   <div class="cta">
-    <p>Tinggal pilih paketnya, sisanya biar kami yang urus.</p>
-    <a href="https://wa.me/6283124910460" target="_blank">
+    <a href="https://wa.me/6283124910460" target="_blank" id="waBtn">
       Chat WhatsApp Sekarang
     </a>
   </div>
 
-  <footer>
-    © 2026 Premium Social Media Service
-  </footer>
-
+  <footer>© 2026 Premium Social Media Service</footer>
 </div>
 
 <script>
-const overlay = document.getElementById("overlay");
-const main = document.getElementById("main");
-const music = document.getElementById("music");
-const images = document.querySelectorAll(".section img");
+const overlay=document.getElementById("overlay");
+const main=document.getElementById("main");
+const music=document.getElementById("music");
+const images=document.querySelectorAll(".section img");
+const waBtn=document.getElementById("waBtn");
 
 function start(){
-  overlay.style.display = "none";
+  overlay.style.display="none";
   main.classList.add("show");
-
-  music.volume = 0.4;
+  music.volume=0.4;
   music.play();
-
-  let vol = 0.4;
-  let up = true;
-  setInterval(() => {
-    if (up) {
-      vol += 0.02;
-      if (vol >= 0.6) up = false;
-    } else {
-      vol -= 0.02;
-      if (vol <= 0.4) up = true;
-    }
-    music.volume = vol;
-  }, 1200);
 }
 
-window.addEventListener("scroll", () => {
-  images.forEach(img => {
-    const rect = img.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 80) {
+window.addEventListener("scroll",()=>{
+  images.forEach(img=>{
+    if(img.getBoundingClientRect().top < innerHeight-80){
       img.classList.add("show-img");
     }
   });
+});
+
+// FADE OUT MUSIC SAAT KLIK WA
+waBtn.addEventListener("click",()=>{
+  let fade=setInterval(()=>{
+    if(music.volume>0.05){
+      music.volume-=0.02;
+    }else{
+      music.pause();
+      clearInterval(fade);
+    }
+  },120);
 });
 </script>
 
