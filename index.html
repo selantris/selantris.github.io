@@ -3,84 +3,153 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Premium Social Media Service</title>
+<title>Elite Social Media Services</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(180deg,#0b0b0b,#121212);
-  color: #fff;
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif}
+body{
+  background:radial-gradient(circle at top,#1f1f1f,#070707);
+  color:#fff;
+  overflow-x:hidden;
+}
+.container{max-width:1400px;margin:auto;padding:20px}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+.hero h1{
+  font-size:48px;
+  line-height:1.2;
+}
+.hero span{
+  background:linear-gradient(135deg,#ffd700,#ff9f00);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.hero p{
+  opacity:.75;
+  margin-top:15px;
+  max-width:600px;
+}
+.hero a{
+  margin-top:35px;
+  padding:16px 34px;
+  border-radius:50px;
+  background:linear-gradient(135deg,#25D366,#1ebc59);
+  color:#fff;
+  font-weight:bold;
+  text-decoration:none;
+  box-shadow:0 20px 40px rgba(37,211,102,.55);
+  animation:pulse 2s infinite;
 }
 
-.container {
-  max-width: 720px;
-  margin: auto;
-  padding: 18px;
+/* SECTION TITLE */
+.title{
+  text-align:center;
+  margin:90px 0 40px;
+}
+.title h2{
+  font-size:34px;
+}
+.title p{opacity:.6}
+
+/* GALLERY */
+.section{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:26px;
+}
+.card{
+  position:relative;
+  overflow:hidden;
+  border-radius:22px;
+  box-shadow:0 25px 60px rgba(0,0,0,.6);
+  opacity:0;
+  transform:translateY(40px);
+  transition:.8s ease;
+}
+.card.show{
+  opacity:1;
+  transform:none;
+}
+.card img{
+  width:100%;
+  display:block;
+  transition:.7s ease;
+}
+.card:hover img{
+  transform:scale(1.1);
+}
+.overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.7),transparent);
 }
 
-h1 {
-  text-align: center;
-  letter-spacing: 1px;
+/* TRUST */
+.trust{
+  margin:120px 0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+}
+.trust div{
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(10px);
+  padding:30px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 15px 40px rgba(0,0,0,.5);
+}
+.trust h3{color:#ffd700;margin-bottom:10px}
+
+/* FINAL CTA */
+.final{
+  text-align:center;
+  margin:120px 0 80px;
+}
+.final h2{
+  font-size:36px;
+}
+.final a{
+  display:inline-block;
+  margin-top:30px;
+  padding:18px 40px;
+  border-radius:60px;
+  background:linear-gradient(135deg,#ffd700,#ff9f00);
+  color:#000;
+  font-weight:bold;
+  text-decoration:none;
+  box-shadow:0 25px 50px rgba(255,215,0,.45);
 }
 
-.subtitle {
-  text-align: center;
-  opacity: .7;
-  margin-bottom: 30px;
+/* FOOTER */
+.footer{text-align:center;opacity:.6;font-size:13px;margin-bottom:30px}
+
+/* FLOAT WA */
+.whatsapp{
+  position:fixed;
+  bottom:22px;
+  right:22px;
+  background:linear-gradient(135deg,#25D366,#1ebc59);
+  color:#fff;
+  padding:16px 26px;
+  border-radius:50px;
+  font-weight:bold;
+  text-decoration:none;
+  box-shadow:0 20px 45px rgba(37,211,102,.6);
+  animation:pulse 2s infinite;
+  z-index:999;
 }
 
-.section img {
-  width: 100%;
-  border-radius: 14px;
-  margin-bottom: 18px;
-  box-shadow: 0 12px 30px rgba(0,0,0,.6);
-  animation: fadeUp .8s ease;
-}
-
-.cta {
-  display: block;
-  background: linear-gradient(135deg,#25d366,#1ebe57);
-  color: #000;
-  text-align: center;
-  padding: 18px;
-  border-radius: 50px;
-  font-weight: bold;
-  font-size: 18px;
-  margin: 35px 0;
-}
-
-.trust {
-  text-align: center;
-  opacity: .8;
-  line-height: 1.8;
-}
-
-.footer {
-  text-align: center;
-  font-size: 13px;
-  opacity: .6;
-  margin-top: 40px;
-}
-
-.whatsapp {
-  position: fixed;
-  bottom: 18px;
-  right: 18px;
-  background: #25d366;
-  color: #000;
-  padding: 14px 18px;
-  border-radius: 50px;
-  font-weight: bold;
-  animation: pulse 2s infinite;
-}
-
-@keyframes fadeUp {
-  from {opacity:0; transform:translateY(30px);}
-  to {opacity:1; transform:none;}
-}
-
-@keyframes pulse {
+/* ANIM */
+@keyframes pulse{
   0%{transform:scale(1)}
   50%{transform:scale(1.08)}
   100%{transform:scale(1)}
@@ -92,52 +161,82 @@ h1 {
 
 <div class="container">
 
-<h1>Social Media Growth</h1>
-<div class="subtitle">Premium • Aman • Cepat • Profesional</div>
+<!-- HERO -->
+<div class="hero">
+  <h1><span>Elite</span> Social Media Services</h1>
+  <p>Naikkan trust, engagement, dan penjualan dengan layanan premium berkelas agency.</p>
+  <a href="https://wa.me/6283124910460?text=Halo%20saya%20mau%20order%20layanan%20premium" target="_blank">
+    Order Sekarang
+  </a>
+</div>
+
+<!-- GALLERY -->
+<div class="title">
+  <h2>Portfolio & Results</h2>
+  <p>Bukti nyata kualitas layanan kami</p>
+</div>
 
 <div class="section">
-  <img src="f1.jpg">
-  <img src="f2.jpg">
-  <img src="f3.jpg">
+  <!-- URUTAN SESUAI FILE -->
+  <div class="card"><img src="f1.jpg"><div class="overlay"></div></div>
+  <div class="card"><img src="f2.jpg"><div class="overlay"></div></div>
+  <div class="card"><img src="f3.jpg"><div class="overlay"></div></div>
 
-  <img src="instagram1.jpg">
-  <img src="instagram2.jpg">
+  <div class="card"><img src="instagram1.jpg"><div class="overlay"></div></div>
+  <div class="card"><img src="instagram2.jpg"><div class="overlay"></div></div>
 
-  <img src="t1.jpg">
-  <img src="t2.jpg">
-  <img src="t3.jpg">
-  <img src="t4.jpg">
+  <div class="card"><img src="x1.jpg"><div class="overlay"></div></div>
+  <div class="card"><img src="x2.jpg"><div class="overlay"></div></div>
 
-  <img src="x1.jpg">
-  <img src="x2.jpg">
+  <div class="card"><img src="y1.jpg"><div class="overlay"></div></div>
+  <div class="card"><img src="y2.jpg"><div class="overlay"></div></div>
+  <div class="card"><img src="y3.jpg"><div class="overlay"></div></div>
 
-  <img src="y1.jpg">
-  <img src="y2.jpg">
-  <img src="y3.jpg">
+  <div class="card"><img src="t1.jpg"><div class="overlay"></div></div>
+  <div class="card"><img src="t2.jpg"><div class="overlay"></div></div>
+  <div class="card"><img src="t3.jpg"><div class="overlay"></div></div>
+  <div class="card"><img src="t4.jpg"><div class="overlay"></div></div>
 
-  <img src="o2.jpg">
-  <img src="o1.jpg">
+  <div class="card"><img src="o2.jpg"><div class="overlay"></div></div>
+  <div class="card"><img src="o1.jpg"><div class="overlay"></div></div>
 </div>
-  
-<a class="cta" href="https://wa.me/6283124910460" target="_blank">
-  Order Sekarang via WhatsApp
-</a>
 
+<!-- TRUST -->
 <div class="trust">
-✅ No Password<br>
-⚡ Fast Process<br>
-💎 Trusted & Premium Service
+  <div><h3>🔒 Aman</h3>No Password Required</div>
+  <div><h3>⚡ Cepat</h3>Proses Kilat & Real</div>
+  <div><h3>💎 Premium</h3>Agency Level Quality</div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="final">
+  <h2>Siap Naik Level?</h2>
+  <a href="https://wa.me/6283124910460?text=Halo%20saya%20siap%20order%20layanan%20elite" target="_blank">
+    Chat WhatsApp Sekarang
+  </a>
 </div>
 
 <div class="footer">
-© 2025 Premium Social Media Service
+© 2025 Elite Social Media Services
 </div>
 
 </div>
 
-<a class="whatsapp" href="https://wa.me/6283124910460" target="_blank">
+<a class="whatsapp" href="https://wa.me/6283124910460?text=Halo%20saya%20tertarik%20dengan%20layanan%20elite" target="_blank">
 WhatsApp
 </a>
+
+<script>
+const cards=document.querySelectorAll('.card');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+},{threshold:.2});
+cards.forEach(card=>observer.observe(card));
+</script>
 
 </body>
 </html>
