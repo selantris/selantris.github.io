@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elite Social Media Services</title>
+<title>Jasa Sosmed Premium</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif}
 body{
-  background:radial-gradient(circle at top,#1f1f1f,#070707);
+  background:radial-gradient(circle at top,#2a2a2a,#050505);
   color:#fff;
   overflow-x:hidden;
 }
@@ -24,55 +24,53 @@ body{
   text-align:center;
 }
 .hero h1{
-  font-size:48px;
-  line-height:1.2;
+  font-size:52px;
 }
 .hero span{
-  background:linear-gradient(135deg,#ffd700,#ff9f00);
+  background:linear-gradient(135deg,#ffd700,#ff9f00,#ff5e00);
   -webkit-background-clip:text;
   color:transparent;
 }
 .hero p{
-  opacity:.75;
-  margin-top:15px;
-  max-width:600px;
+  opacity:.85;
+  margin-top:18px;
+  max-width:620px;
+  font-size:18px;
 }
 .hero a{
-  margin-top:35px;
-  padding:16px 34px;
-  border-radius:50px;
+  margin-top:40px;
+  padding:18px 42px;
+  border-radius:60px;
   background:linear-gradient(135deg,#25D366,#1ebc59);
   color:#fff;
   font-weight:bold;
   text-decoration:none;
-  box-shadow:0 20px 40px rgba(37,211,102,.55);
+  box-shadow:0 25px 60px rgba(37,211,102,.6);
   animation:pulse 2s infinite;
 }
 
-/* SECTION TITLE */
+/* TITLE */
 .title{
   text-align:center;
-  margin:90px 0 40px;
+  margin:100px 0 45px;
 }
-.title h2{
-  font-size:34px;
-}
-.title p{opacity:.6}
+.title h2{font-size:36px}
+.title p{opacity:.65}
 
-/* GALLERY */
+/* GRID */
 .section{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:26px;
+  gap:28px;
 }
 .card{
   position:relative;
   overflow:hidden;
-  border-radius:22px;
-  box-shadow:0 25px 60px rgba(0,0,0,.6);
+  border-radius:26px;
+  box-shadow:0 30px 80px rgba(0,0,0,.75);
   opacity:0;
-  transform:translateY(40px);
-  transition:.8s ease;
+  transform:translateY(60px);
+  transition:1s ease;
 }
 .card.show{
   opacity:1;
@@ -81,10 +79,10 @@ body{
 .card img{
   width:100%;
   display:block;
-  transition:.7s ease;
+  transition:.9s ease;
 }
 .card:hover img{
-  transform:scale(1.1);
+  transform:scale(1.15);
 }
 .overlay{
   position:absolute;
@@ -94,64 +92,56 @@ body{
 
 /* TRUST */
 .trust{
-  margin:120px 0;
+  margin:130px 0;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:30px;
 }
 .trust div{
-  background:rgba(255,255,255,.05);
-  backdrop-filter:blur(10px);
-  padding:30px;
-  border-radius:20px;
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(12px);
+  padding:34px;
+  border-radius:24px;
   text-align:center;
-  box-shadow:0 15px 40px rgba(0,0,0,.5);
 }
-.trust h3{color:#ffd700;margin-bottom:10px}
+.trust h3{color:#ffd700}
 
 /* FINAL CTA */
 .final{
   text-align:center;
-  margin:120px 0 80px;
+  margin:140px 0 90px;
 }
-.final h2{
-  font-size:36px;
-}
+.final h2{font-size:38px}
+.final p{opacity:.7}
 .final a{
   display:inline-block;
-  margin-top:30px;
-  padding:18px 40px;
-  border-radius:60px;
-  background:linear-gradient(135deg,#ffd700,#ff9f00);
+  margin-top:34px;
+  padding:20px 46px;
+  border-radius:70px;
+  background:linear-gradient(135deg,#ffd700,#ff9f00,#ff5e00);
   color:#000;
   font-weight:bold;
   text-decoration:none;
-  box-shadow:0 25px 50px rgba(255,215,0,.45);
 }
-
-/* FOOTER */
-.footer{text-align:center;opacity:.6;font-size:13px;margin-bottom:30px}
 
 /* FLOAT WA */
 .whatsapp{
   position:fixed;
   bottom:22px;
   right:22px;
-  background:linear-gradient(135deg,#25D366,#1ebc59);
+  background:#25D366;
   color:#fff;
-  padding:16px 26px;
-  border-radius:50px;
+  padding:18px 28px;
+  border-radius:60px;
   font-weight:bold;
   text-decoration:none;
-  box-shadow:0 20px 45px rgba(37,211,102,.6);
-  animation:pulse 2s infinite;
   z-index:999;
 }
 
 /* ANIM */
 @keyframes pulse{
   0%{transform:scale(1)}
-  50%{transform:scale(1.08)}
+  50%{transform:scale(1.1)}
   100%{transform:scale(1)}
 }
 </style>
@@ -159,25 +149,27 @@ body{
 
 <body>
 
+<!-- 🎵 AUTO PLAY MUSIC (MUTED) -->
+<audio id="bgMusic" autoplay loop muted>
+  <source src="carol.mp3" type="audio/mpeg">
+</audio>
+
 <div class="container">
 
-<!-- HERO -->
 <div class="hero">
-  <h1><span>Elite</span> Social Media Services</h1>
-  <p>Naikkan trust, engagement, dan penjualan dengan layanan premium berkelas agency.</p>
-  <a href="https://wa.me/6283124910460?text=Halo%20saya%20mau%20order%20layanan%20premium" target="_blank">
-    Order Sekarang
+  <h1>Bikin Sosmed Kamu <span>Naik Level</span></h1>
+  <p>Scroll santai, pilih paket, dengerin vibes. Tinggal chat, beres 🔥</p>
+  <a href="https://wa.me/6283124910460" target="_blank">
+    Gas Order WhatsApp
   </a>
 </div>
 
-<!-- GALLERY -->
 <div class="title">
-  <h2>Portfolio & Results</h2>
-  <p>Bukti nyata kualitas layanan kami</p>
+  <h2>Paket & Harga</h2>
+  <p>Pilih yang cocok, harga ada di gambar</p>
 </div>
 
 <div class="section">
-  <!-- URUTAN SESUAI FILE -->
   <div class="card"><img src="f1.jpg"><div class="overlay"></div></div>
   <div class="card"><img src="f2.jpg"><div class="overlay"></div></div>
   <div class="card"><img src="f3.jpg"><div class="overlay"></div></div>
@@ -201,32 +193,22 @@ body{
   <div class="card"><img src="o1.jpg"><div class="overlay"></div></div>
 </div>
 
-<!-- TRUST -->
-<div class="trust">
-  <div><h3>🔒 Aman</h3>No Password Required</div>
-  <div><h3>⚡ Cepat</h3>Proses Kilat & Real</div>
-  <div><h3>💎 Premium</h3>Agency Level Quality</div>
-</div>
-
-<!-- FINAL CTA -->
 <div class="final">
-  <h2>Siap Naik Level?</h2>
-  <a href="https://wa.me/6283124910460?text=Halo%20saya%20siap%20order%20layanan%20elite" target="_blank">
-    Chat WhatsApp Sekarang
+  <h2>Udah Cocok?</h2>
+  <p>Tinggal chat, kita langsung gas 🚀</p>
+  <a href="https://wa.me/6283124910460" target="_blank">
+    Chat WhatsApp
   </a>
 </div>
 
-<div class="footer">
-© 2025 Elite Social Media Services
 </div>
 
-</div>
-
-<a class="whatsapp" href="https://wa.me/6283124910460?text=Halo%20saya%20tertarik%20dengan%20layanan%20elite" target="_blank">
+<a class="whatsapp" href="https://wa.me/6283124910460" target="_blank">
 WhatsApp
 </a>
 
 <script>
+/* ANIM CARD */
 const cards=document.querySelectorAll('.card');
 const observer=new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
@@ -234,8 +216,19 @@ const observer=new IntersectionObserver(entries=>{
       entry.target.classList.add('show');
     }
   });
-},{threshold:.2});
+},{threshold:.25});
 cards.forEach(card=>observer.observe(card));
+
+/* AUTO UNMUTE ON INTERACTION */
+const music=document.getElementById("bgMusic");
+function enableSound(){
+  music.muted=false;
+  music.volume=0.6;
+  document.removeEventListener("click",enableSound);
+  document.removeEventListener("scroll",enableSound);
+}
+document.addEventListener("click",enableSound);
+document.addEventListener("scroll",enableSound);
 </script>
 
 </body>
