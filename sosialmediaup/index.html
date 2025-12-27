@@ -222,15 +222,22 @@ notif.classList.add("show");
 setTimeout(()=>notif.classList.remove("show"),4000);
 }
 
-/* NOTIF PEMBELI (AWAL CEPAT) */
+/* NOTIF PEMBELI (JARAK LEBIH REAL) */
 let notifCount=0;
 function buyerNotif(){
 const text=`🔥 ${names[Math.floor(Math.random()*names.length)]} order ${services[Math.floor(Math.random()*services.length)]} • ${times[Math.floor(Math.random()*times.length)]} lalu`;
 showNotif(text);
 notifCount++;
-setTimeout(buyerNotif, notifCount<3 ? 6000 : 30000+Math.random()*20000);
+
+let nextTime;
+if(notifCount===1) nextTime=7000;
+else if(notifCount===2) nextTime=12000;
+else if(notifCount===3) nextTime=18000;
+else nextTime=30000+Math.random()*20000;
+
+setTimeout(buyerNotif,nextTime);
 }
-setTimeout(buyerNotif,4000);
+setTimeout(buyerNotif,5000);
 
 /* SLOT LOOP */
 function reduceSlot(){
