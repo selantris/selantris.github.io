@@ -12,191 +12,306 @@
 body{
   margin:0;
   font-family:'Segoe UI',Arial,sans-serif;
-  background:
-    radial-gradient(circle at 20% 20%,rgba(255,210,125,.15),transparent 40%),
-    radial-gradient(circle at 80% 30%,rgba(255,255,255,.08),transparent 45%),
-    linear-gradient(180deg,#0a0a12,#000);
+  background:#0a0a12;
   color:#fff;
   overflow-x:hidden;
 }
 
-/* GLITTER */
-body::before{
-  content:"";
+/* ===== BACKGROUND ===== */
+.bg{
   position:fixed;
   inset:0;
-  background-image:radial-gradient(#fff 1px,transparent 1px);
-  background-size:120px 120px;
-  opacity:.05;
-  animation:glitter 22s linear infinite;
-  pointer-events:none;
+  z-index:-3;
+  background:radial-gradient(circle at top,#1f1f3a,#0a0a12 70%);
+}
+.bg span{
+  position:absolute;
+  width:2px;height:2px;
+  background:rgba(255,255,255,.9);
+  border-radius:50%;
+  animation:glitter linear infinite;
 }
 @keyframes glitter{
-  from{background-position:0 0}
-  to{background-position:300px 400px}
+  from{transform:translateY(0);opacity:0}
+  20%{opacity:1}
+  to{transform:translateY(-120vh);opacity:0}
 }
 
-/* TOP BAR */
-.topbar{
+.aurora{
   position:fixed;
-  top:14px;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  gap:10px;
-  z-index:99;
+  inset:-20%;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,210,125,.28), transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(124,255,178,.25), transparent 45%),
+    radial-gradient(circle at 50% 90%, rgba(130,180,255,.25), transparent 45%);
+  animation:auroraMove 18s ease-in-out infinite alternate;
+  z-index:-2;
 }
-.badge{
-  background:rgba(0,0,0,.65);
-  padding:8px 16px;
-  border-radius:40px;
-  font-size:13px;
-  backdrop-filter:blur(8px);
-  box-shadow:0 0 15px rgba(255,210,125,.25);
-}
-.badge b{color:var(--gold)}
-
-.notif{
-  position:fixed;
-  bottom:20px;
-  left:50%;
-  transform:translateX(-50%);
-  background:rgba(0,0,0,.75);
-  padding:12px 18px;
-  border-radius:14px;
-  font-size:13px;
-  opacity:0;
-  transition:.6s;
-  z-index:99;
-}
-.notif.show{opacity:1;bottom:36px}
-
-.container{
-  max-width:760px;
-  margin:auto;
-  padding:90px 22px 22px;
+@keyframes auroraMove{
+  to{transform:translate(-80px,-60px) scale(1.2)}
 }
 
-.section img{
-  width:100%;
-  border-radius:18px;
-  margin-bottom:22px;
-  box-shadow:0 25px 60px rgba(0,0,0,.55);
+/* OVERLAY */
+.overlay{
+  position:fixed;inset:0;
+  background:linear-gradient(180deg,#000,#0a0a12);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  z-index:99;text-align:center;
+}
+.overlay h1{
+  font-size:32px;
+  background:linear-gradient(45deg,#fff,#ffd27d);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:float 3s infinite;
+}
+.overlay button{
+  margin-top:25px;
+  padding:15px 45px;
+  border:none;border-radius:60px;
+  font-weight:700;
+  background:linear-gradient(120deg,#ffd27d,#ffb347);
   cursor:pointer;
-  transition:.3s;
+  animation:breath 2.5s infinite;
 }
-.section img:hover{
-  transform:scale(1.02);
-  box-shadow:0 0 25px rgba(255,210,125,.35);
+
+/* MAIN */
+.container{
+  max-width:760px;margin:auto;padding:22px;
+  opacity:0;transform:translateY(40px);
+  transition:1s ease;
 }
+.show{opacity:1;transform:none}
+
+.hero{text-align:center}
+.trust{text-align:center;opacity:.75;margin:20px 0}
+
+/* ADMIN STATUS */
+.status{
+  text-align:center;
+  font-size:13px;
+  margin-bottom:14px;
+}
+.status b{color:#25D366}
+.status.offline b{color:#ff4d4d}
+
+/* SLOT */
+.urgency{
+  text-align:center;
+  margin:15px 0 12px;
+  padding:12px;
+  border:1px dashed rgba(255,210,125,.5);
+  border-radius:14px;
+  font-size:14px;
+}
+.slot-danger{color:#ff4d4d;animation:blink 1.2s infinite}
+@keyframes blink{50%{opacity:.4}}
+
+.progress{
+  height:6px;
+  background:#222;
+  border-radius:10px;
+  overflow:hidden;
+  margin:10px 0 30px;
+}
+.progress div{
+  height:100%;
+  background:linear-gradient(90deg,#ffd27d,#ff9f43);
+  width:100%;
+  transition:.6s ease;
+}
+
+/* IMAGES */
+.section img{
+  width:100%;border-radius:18px;
+  margin-bottom:22px;
+  opacity:0;transform:translateY(30px);
+  transition:.6s ease;
+  box-shadow:0 20px 50px rgba(0,0,0,.6);
+  cursor:pointer;
+}
+.section img.show-img{opacity:1;transform:none}
+.section img:hover{transform:scale(1.04)}
+.tap{animation:tap .25s}
+@keyframes tap{50%{transform:scale(.96)}}
+
+/* CTA */
+.cta{text-align:center;margin:60px 0}
+.cta a{
+  padding:18px 44px;border-radius:50px;
+  background:linear-gradient(45deg,#25D366,#7CFFB2);
+  color:#000;font-weight:800;
+  text-decoration:none;
+  animation:pulse 1.4s infinite;
+}
+
+/* FLOAT WA */
+#waFloat{
+  position:fixed;bottom:20px;right:20px;
+  background:#25D366;color:white;
+  padding:14px 18px;border-radius:50px;
+  font-weight:bold;text-decoration:none;
+  display:none;z-index:999;
+  animation:floatWA 3s infinite;
+}
+@keyframes floatWA{50%{transform:translateY(-6px)}}
+
+/* NOTIF */
+.notif{
+  position:fixed;bottom:90px;left:20px;
+  background:rgba(0,0,0,.8);
+  border:1px solid rgba(255,210,125,.4);
+  padding:12px 16px;border-radius:14px;
+  font-size:13px;opacity:0;
+  transform:translateY(20px);
+  transition:.5s ease;z-index:999;
+}
+.notif.show{opacity:1;transform:none}
+
+@keyframes float{50%{transform:translateY(-8px)}}
+@keyframes breath{50%{transform:scale(1.08)}}
+@keyframes pulse{50%{transform:scale(1.06)}}
 </style>
 </head>
 
 <body>
 
-<div class="topbar">
-  <div class="badge">⚡ Slot tersisa <b id="slot">13</b></div>
-  <div class="badge">👀 Dilihat <b id="viewer">9</b> orang</div>
+<div class="bg" id="bg"></div>
+<div class="aurora"></div>
+
+<div class="overlay" id="overlay">
+  <h1>Waktunya Naik Level 🔥</h1>
+  <button onclick="start()">Masuk</button>
 </div>
 
-<div class="notif" id="notif"></div>
+<audio id="music" src="carol.mp3" loop muted></audio>
 
-<div class="container">
+<div class="container" id="main">
+  <div class="hero"><h2>Upgrade Sosial Media</h2></div>
+
+  <div class="status" id="status"></div>
+
+  <div class="trust">✔ Aman • Tanpa Login • Konsultasi Gratis</div>
+
+  <div class="urgency">
+    ⚡ Slot hari ini tersisa <b id="slot">13</b>
+  </div>
+  <div class="progress"><div id="bar"></div></div>
+
   <div class="section">
-    <!-- INSTAGRAM -->
     <img src="instagram1.png" data-platform="Instagram" data-service="Followers">
     <img src="instagram2.png" data-platform="Instagram" data-service="Likes">
-
-    <!-- FOLLOWERS -->
     <img src="f1.png" data-platform="Instagram" data-service="Followers">
     <img src="f2.png" data-platform="TikTok" data-service="Followers">
     <img src="f3.png" data-platform="X / Twitter" data-service="Followers">
-
-    <!-- TIKTOK -->
     <img src="t1.png" data-platform="TikTok" data-service="Followers">
     <img src="t2.png" data-platform="TikTok" data-service="Likes">
     <img src="t3.png" data-platform="TikTok" data-service="Views">
     <img src="t4.png" data-platform="TikTok" data-service="Share">
-
-    <!-- X -->
     <img src="x1.png" data-platform="X / Twitter" data-service="Followers">
     <img src="x2.png" data-platform="X / Twitter" data-service="Likes">
-
-    <!-- YOUTUBE -->
     <img src="y1.png" data-platform="YouTube" data-service="Subscribers">
     <img src="y2.png" data-platform="YouTube" data-service="Views">
     <img src="y3.png" data-platform="YouTube" data-service="Likes">
-
-    <!-- OTHERS -->
     <img src="o1.png" data-platform="Instagram" data-service="Story Views">
     <img src="o2.png" data-platform="Instagram" data-service="Reels Views">
   </div>
+
+  <div class="cta" id="cta">
+    <a href="https://wa.me/6283124910460">💬 WhatsApp Sekarang</a>
+  </div>
 </div>
 
+<a href="https://wa.me/6283124910460" id="waFloat">💬 WhatsApp</a>
+<div class="notif" id="notif"></div>
+
 <script>
-/* SLOT PERSIST */
-const SLOT_KEY="slot_sisa";
-let slot=parseInt(localStorage.getItem(SLOT_KEY))||13;
-if(slot<3) slot=13;
-const slotEl=document.getElementById("slot");
-slotEl.textContent=slot;
-
-function reduceSlot(){
-  if(slot<=3) return;
-  slot--;
-  slotEl.textContent=slot;
-  localStorage.setItem(SLOT_KEY,slot);
-  setTimeout(reduceSlot,(Math.random()*180+120)*1000);
+/* GLITTER */
+const bg=document.getElementById("bg");
+for(let i=0;i<90;i++){
+  const s=document.createElement("span");
+  s.style.left=Math.random()*100+"%";
+  s.style.bottom=Math.random()*100+"%";
+  s.style.animationDuration=(4+Math.random()*6)+"s";
+  bg.appendChild(s);
 }
-setTimeout(reduceSlot,(Math.random()*120+120)*1000);
 
-/* VIEWER */
-let viewer=9;
-const viewerEl=document.getElementById("viewer");
-setInterval(()=>{
-  viewer+=Math.floor(Math.random()*3)-1;
-  viewer=Math.min(17,Math.max(4,viewer));
-  viewerEl.textContent=viewer;
-},8000);
-
-/* NOTIF CHECKOUT */
+const overlay=document.getElementById("overlay");
+const main=document.getElementById("main");
+const music=document.getElementById("music");
+const images=document.querySelectorAll(".section img");
+const waFloat=document.getElementById("waFloat");
 const notif=document.getElementById("notif");
-const names=["Ari","Dina","Rizki","Putra","Salsa","Fajar","Rani","Yoga","Indah","Bayu"];
-const times=["1 menit","2 menit","5 menit","7 menit","10 menit"];
-function showNotif(){
-  const n=names[Math.floor(Math.random()*names.length)];
-  const t=times[Math.floor(Math.random()*times.length)];
-  notif.innerHTML=`✅ <b>${n}****</b> checkout • ${t} lalu`;
-  notif.classList.add("show");
-  setTimeout(()=>notif.classList.remove("show"),4500);
-  setTimeout(showNotif,(Math.random()*150+120)*1000);
-}
-setTimeout(showNotif,60000);
+const slotEl=document.getElementById("slot");
+const bar=document.getElementById("bar");
+const status=document.getElementById("status");
 
-/* CLICK FOTO → WA TEMPLATE */
-document.querySelectorAll(".section img").forEach(img=>{
-  img.addEventListener("click",()=>{
-    const platform=img.dataset.platform;
-    const service=img.dataset.service;
+/* ADMIN STATUS */
+const hour=new Date().getHours();
+if(hour>=9 && hour<=22){
+  status.innerHTML="🟢 <b>Admin Online</b> • Fast response";
+}else{
+  status.classList.add("offline");
+  status.innerHTML="🔴 <b>Admin Offline</b> • Slow response";
+}
+
+/* SLOT */
+let slot=localStorage.getItem("slot")||13;
+slotEl.textContent=slot;
+bar.style.width=(slot/13*100)+"%";
+
+function start(){
+  overlay.style.display="none";
+  main.classList.add("show");
+  waFloat.style.display="block";
+  music.muted=false;music.volume=0.4;
+  music.play().catch(()=>{});
+  images.forEach((img,i)=>setTimeout(()=>img.classList.add("show-img"),i*120));
+}
+
+/* CLICK IMAGE */
+images.forEach(img=>{
+  img.onclick=()=>{
+    img.classList.add("tap");
+    setTimeout(()=>img.classList.remove("tap"),250);
+
+    notif.textContent="👨‍💻 Admin sedang memproses pesanan...";
+    notif.classList.add("show");
+    setTimeout(()=>notif.classList.remove("show"),2000);
 
     const msg=`Halo Admin
 
 Saya mau order layanan
 
-Platform : ${platform}
-Jenis Layanan : ${service}
+Platform : ${img.dataset.platform}
+Jenis Layanan : ${img.dataset.service}
 
 Username / Link Akun :
 Jumlah order :
 
-Terima kasih `;
-
-    window.open(
-      "https://wa.me/6283124910460?text="+encodeURIComponent(msg),
-      "_blank"
-    );
-  });
+Terima kasih`;
+    setTimeout(()=>{
+      window.open("https://wa.me/6283124910460?text="+encodeURIComponent(msg));
+    },1200);
+  }
 });
+
+/* AUTO SCROLL CTA */
+setTimeout(()=>{
+  document.getElementById("cta").scrollIntoView({behavior:"smooth"});
+},45000);
+
+/* SLOT TURUN */
+setInterval(()=>{
+  if(slot>2 && Math.random()>0.7){
+    slot--;
+    slotEl.textContent=slot;
+    bar.style.width=(slot/13*100)+"%";
+    localStorage.setItem("slot",slot);
+    if(slot<=2) slotEl.classList.add("slot-danger");
+  }
+},60000);
 </script>
 
 </body>
