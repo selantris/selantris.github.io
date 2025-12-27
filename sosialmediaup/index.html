@@ -17,20 +17,42 @@ body{
   overflow-x:hidden;
 }
 
-/* BACKGROUND ANIMATION */
+/* ===== GLITTER BACKGROUND ===== */
 .bg{
   position:fixed;
   inset:0;
+  overflow:hidden;
+  z-index:-3;
+  background:radial-gradient(circle at top,#1f1f3a,#0a0a12 70%);
+}
+.bg span{
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:rgba(255,255,255,.9);
+  border-radius:50%;
+  animation:glitter linear infinite;
+}
+@keyframes glitter{
+  from{transform:translateY(0);opacity:0}
+  20%{opacity:1}
+  to{transform:translateY(-120vh);opacity:0}
+}
+
+/* ===== AURORA ===== */
+.aurora{
+  position:fixed;
+  inset:-20%;
   background:
-    radial-gradient(circle at 20% 30%, rgba(255,210,125,.15), transparent 40%),
-    radial-gradient(circle at 80% 60%, rgba(124,255,178,.12), transparent 45%),
-    radial-gradient(circle at 50% 90%, rgba(130,180,255,.12), transparent 45%);
-  animation:bgMove 14s ease-in-out infinite alternate;
+    radial-gradient(circle at 20% 30%, rgba(255,210,125,.28), transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(124,255,178,.25), transparent 45%),
+    radial-gradient(circle at 50% 90%, rgba(130,180,255,.25), transparent 45%);
+  animation:auroraMove 16s ease-in-out infinite alternate;
   z-index:-2;
 }
-@keyframes bgMove{
-  from{transform:scale(1)}
-  to{transform:scale(1.12)}
+@keyframes auroraMove{
+  from{transform:translate(0,0) scale(1)}
+  to{transform:translate(-70px,-50px) scale(1.18)}
 }
 
 /* OVERLAY */
@@ -77,11 +99,18 @@ body{
 .hero{text-align:center}
 .hero h2{font-size:28px}
 
-.trust{
+.trust{text-align:center;opacity:.75;margin:20px 0}
+
+/* URGENCY */
+.urgency{
   text-align:center;
-  opacity:.75;
-  margin:25px 0;
+  margin:15px 0 30px;
+  padding:12px;
+  border:1px dashed rgba(255,210,125,.5);
+  border-radius:14px;
+  font-size:14px;
 }
+.urgency b{color:var(--gold)}
 
 /* IMAGES */
 .section img{
@@ -91,11 +120,18 @@ body{
   opacity:0;
   transform:translateY(30px);
   transition:.7s ease;
-  box-shadow:0 20px 50px rgba(0,0,0,.55);
+  box-shadow:
+    0 0 0 0 rgba(255,210,125,.6),
+    0 20px 50px rgba(0,0,0,.6);
   cursor:pointer;
 }
 .section img.show-img{opacity:1;transform:none}
-.section img:hover{transform:scale(1.03)}
+.section img:hover{
+  transform:scale(1.04);
+  box-shadow:
+    0 0 20px rgba(255,210,125,.8),
+    0 20px 50px rgba(0,0,0,.7);
+}
 
 /* CTA */
 .cta{text-align:center;margin:60px 0}
@@ -124,13 +160,13 @@ body{
   z-index:999;
 }
 
-/* CHECKOUT NOTIF */
+/* NOTIF */
 .notif{
   position:fixed;
   bottom:90px;
   left:20px;
-  background:rgba(0,0,0,.75);
-  border:1px solid rgba(255,210,125,.3);
+  background:rgba(0,0,0,.78);
+  border:1px solid rgba(255,210,125,.4);
   padding:12px 16px;
   border-radius:14px;
   font-size:13px;
@@ -150,68 +186,72 @@ body{
 
 <body>
 
-<div class="bg"></div>
+<div class="bg" id="bg"></div>
+<div class="aurora"></div>
 
-<!-- OVERLAY -->
 <div class="overlay" id="overlay">
   <h1>Waktunya Naik Level 🔥</h1>
   <button onclick="start()">Masuk</button>
 </div>
 
 <audio id="music" src="carol.mp3" loop muted></audio>
+<audio id="ping" src="https://assets.mixkit.co/sfx/preview/mixkit-interface-option-select-2573.mp3"></audio>
 
-<!-- MAIN -->
 <div class="container" id="main">
+  <div class="hero"><h2>Upgrade Sosial Media</h2></div>
 
-<div class="hero">
-  <h2>Upgrade Sosial Media</h2>
+  <div class="trust">✔ Aman • Tanpa Login • Konsultasi Gratis</div>
+
+  <div class="urgency">
+    ⚡ Slot hari ini tersisa <b id="slot">7</b> order • Reset tiap hari
+  </div>
+
+  <div class="section">
+    <img src="instagram1.png" data-platform="Instagram" data-service="Followers">
+    <img src="instagram2.png" data-platform="Instagram" data-service="Likes">
+    <img src="f1.png" data-platform="Instagram" data-service="Followers">
+    <img src="f2.png" data-platform="TikTok" data-service="Followers">
+    <img src="f3.png" data-platform="X / Twitter" data-service="Followers">
+    <img src="t1.png" data-platform="TikTok" data-service="Followers">
+    <img src="t2.png" data-platform="TikTok" data-service="Likes">
+    <img src="t3.png" data-platform="TikTok" data-service="Views">
+    <img src="t4.png" data-platform="TikTok" data-service="Share">
+    <img src="x1.png" data-platform="X / Twitter" data-service="Followers">
+    <img src="x2.png" data-platform="X / Twitter" data-service="Likes">
+    <img src="y1.png" data-platform="YouTube" data-service="Subscribers">
+    <img src="y2.png" data-platform="YouTube" data-service="Views">
+    <img src="y3.png" data-platform="YouTube" data-service="Likes">
+    <img src="o1.png" data-platform="Instagram" data-service="Story Views">
+    <img src="o2.png" data-platform="Instagram" data-service="Reels Views">
+  </div>
+
+  <div class="cta">
+    <a href="https://wa.me/6283124910460">💬 WhatsApp Sekarang</a>
+  </div>
 </div>
 
-<div class="trust">
-✔ Aman • Tanpa Login • Konsultasi Gratis
-</div>
-
-<div class="section">
-  <img src="instagram1.png" data-platform="Instagram" data-service="Followers">
-  <img src="instagram2.png" data-platform="Instagram" data-service="Likes">
-
-  <img src="f1.png" data-platform="Instagram" data-service="Followers">
-  <img src="f2.png" data-platform="TikTok" data-service="Followers">
-  <img src="f3.png" data-platform="X / Twitter" data-service="Followers">
-
-  <img src="t1.png" data-platform="TikTok" data-service="Followers">
-  <img src="t2.png" data-platform="TikTok" data-service="Likes">
-  <img src="t3.png" data-platform="TikTok" data-service="Views">
-  <img src="t4.png" data-platform="TikTok" data-service="Share">
-
-  <img src="x1.png" data-platform="X / Twitter" data-service="Followers">
-  <img src="x2.png" data-platform="X / Twitter" data-service="Likes">
-
-  <img src="y1.png" data-platform="YouTube" data-service="Subscribers">
-  <img src="y2.png" data-platform="YouTube" data-service="Views">
-  <img src="y3.png" data-platform="YouTube" data-service="Likes">
-
-  <img src="o1.png" data-platform="Instagram" data-service="Story Views">
-  <img src="o2.png" data-platform="Instagram" data-service="Reels Views">
-</div>
-
-<div class="cta">
-  <a href="https://wa.me/6283124910460" target="_blank">💬 WhatsApp Sekarang</a>
-</div>
-
-</div>
-
-<a href="https://wa.me/6283124910460" target="_blank" id="waFloat">💬 WhatsApp</a>
-
+<a href="https://wa.me/6283124910460" id="waFloat">💬 WhatsApp</a>
 <div class="notif" id="notif"></div>
 
 <script>
+/* GLITTER */
+const bg=document.getElementById("bg");
+for(let i=0;i<70;i++){
+  const s=document.createElement("span");
+  s.style.left=Math.random()*100+"%";
+  s.style.bottom=Math.random()*100+"%";
+  s.style.animationDuration=(4+Math.random()*6)+"s";
+  bg.appendChild(s);
+}
+
 const overlay=document.getElementById("overlay");
 const main=document.getElementById("main");
 const music=document.getElementById("music");
+const ping=document.getElementById("ping");
 const images=document.querySelectorAll(".section img");
 const waFloat=document.getElementById("waFloat");
 const notif=document.getElementById("notif");
+const slot=document.getElementById("slot");
 
 function start(){
   overlay.style.display="none";
@@ -223,18 +263,9 @@ function start(){
   images.forEach((img,i)=>setTimeout(()=>img.classList.add("show-img"),i*120));
 }
 
-/* MUSIC FADE */
-function fadeOut(){
-  let f=setInterval(()=>{
-    if(music.volume>0.05){music.volume-=0.02}
-    else{music.pause();clearInterval(f)}
-  },120);
-}
-
 /* CLICK IMAGE */
 images.forEach(img=>{
   img.onclick=()=>{
-    fadeOut();
     const msg=`Halo Admin
 
 Saya mau order layanan
@@ -250,26 +281,23 @@ Terima kasih`;
   }
 });
 
-/* FAKE CHECKOUT NOTIF (JARANG) */
-const services=[
-  "Instagram Followers",
-  "TikTok Likes",
-  "YouTube Subscribers",
-  "Instagram Reels Views",
-  "TikTok Views"
-];
+/* SOCIAL PROOF */
+const services=["Instagram Followers","TikTok Likes","YouTube Subs","Reels Views"];
 const times=["1 menit","2 menit","5 menit","10 menit"];
-
-function showNotif(){
-  notif.textContent=`🔥 Baru checkout ${services[Math.floor(Math.random()*services.length)]} • ${times[Math.floor(Math.random()*times.length)]} lalu`;
-  notif.classList.add("show");
-  setTimeout(()=>notif.classList.remove("show"),4000);
-}
-
-/* muncul 1x tiap 30–60 detik */
 setInterval(()=>{
-  if(Math.random()>0.5) showNotif();
-},30000);
+  if(Math.random()>0.6){
+    notif.textContent=`🔥 Baru checkout ${services[Math.floor(Math.random()*services.length)]} • ${times[Math.floor(Math.random()*times.length)]} lalu`;
+    notif.classList.add("show");
+    ping.play().catch(()=>{});
+    setTimeout(()=>notif.classList.remove("show"),4000);
+  }
+},35000);
+
+/* SLOT COUNT */
+let s=7;
+setInterval(()=>{
+  if(s>2 && Math.random()>0.6){s--;slot.textContent=s}
+},45000);
 </script>
 
 </body>
