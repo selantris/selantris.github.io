@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Naik Level Sosial Media</title>
 
+<meta name="description" content="Jasa upgrade tampilan sosial media agar lebih profesional, rapi, dan dipercaya.">
+<meta name="keywords" content="jasa sosial media, instagram branding, optimasi akun">
+
 <style>
 :root{--gold:#ffd27d}
 *{box-sizing:border-box}
@@ -68,7 +71,14 @@ body{
 .hero h2{font-size:30px}
 .hero span{opacity:.85}
 
-.trust{text-align:center;opacity:.6;margin:26px 0}
+.trust{
+  text-align:center;
+  margin:28px 0;
+  font-size:14px;
+  opacity:.75;
+}
+
+.trust b{color:#ffd27d}
 
 .section img{
   width:100%;
@@ -84,13 +94,18 @@ body{
 .cta{text-align:center;margin:60px 0}
 .cta a{
   display:inline-block;
-  padding:16px 42px;
+  padding:18px 44px;
   border-radius:50px;
   background:linear-gradient(45deg,#25D366,#7CFFB2);
   color:#000;
-  font-weight:700;
+  font-weight:800;
   text-decoration:none;
   animation:pulse 1.4s infinite;
+}
+.cta small{
+  display:block;
+  margin-top:10px;
+  opacity:.75;
 }
 
 footer{text-align:center;opacity:.45;font-size:12px;margin-bottom:26px}
@@ -115,78 +130,56 @@ footer{text-align:center;opacity:.45;font-size:12px;margin-bottom:26px}
 
 <body>
 
+<!-- OVERLAY -->
 <div class="overlay" id="overlay">
-  <h1>Hai, waktunya bikin akunmu naik level 🔥</h1>
-
-  <button onclick="start()">✉️</button>
+  <h1>Waktunya bikin akunmu naik level 🔥</h1>
+  <p>Tampilan rapi bikin akun lebih dipercaya</p>
+  <button onclick="start()">Masuk</button>
 </div>
 
-<audio id="music" src="carol.mp3" loop></audio>
+<!-- MUSIC -->
+<audio id="music" src="carol.mp3" loop muted></audio>
 
+<!-- MAIN CONTENT -->
 <div class="container" id="main">
+
   <div class="hero">
     <h2>Upgrade Tampilan Sosial Mediamu</h2>
-    <span>Biar akunmu keliatan lebih hidup, rapi, nyaman dilihat, dan makin dipercaya.</span>
+    <span>
+      Akun yang rapi terlihat lebih profesional, nyaman dilihat,  
+      dan lebih gampang dapet kepercayaan.
+    </span>
   </div>
 
-  <div class="trust">Simpel • Aman • Praktis</div>
+  <div class="trust">
+    ✔ Dipakai oleh <b>akun UMKM & personal brand</b><br>
+    ✔ Aman • Tanpa login akun • Bisa request gaya
+  </div>
 
   <div class="section">
-    <img src="instagram1.png">
-    <img src="instagram2.png">
-    <img src="f1.png"><img src="f2.png"><img src="f3.png">
-    <img src="t1.png"><img src="t2.png"><img src="t3.png"><img src="t4.png">
-    <img src="x1.png"><img src="x2.png">
-    <img src="y1.png"><img src="y2.png"><img src="y3.png">
-    <img src="o2.png"><img src="o1.png">
+    <img src="instagram1.png" loading="lazy" alt="Feed Instagram profesional">
+    <img src="instagram2.png" loading="lazy" alt="Profil Instagram rapi">
+    <img src="f1.png" loading="lazy"><img src="f2.png" loading="lazy"><img src="f3.png" loading="lazy">
+    <img src="t1.png" loading="lazy"><img src="t2.png" loading="lazy"><img src="t3.png" loading="lazy"><img src="t4.png" loading="lazy">
+    <img src="x1.png" loading="lazy"><img src="x2.png" loading="lazy">
+    <img src="y1.png" loading="lazy"><img src="y2.png" loading="lazy"><img src="y3.png" loading="lazy">
+    <img src="o1.png" loading="lazy"><img src="o2.png" loading="lazy">
   </div>
 
   <div class="cta">
     <a href="https://wa.me/6283124910460" target="_blank" id="waBtn">
-      Chat WhatsApp Sekarang
+      💬 Konsultasi GRATIS via WhatsApp
     </a>
+    <small>Fast response • Bisa tanya dulu tanpa komitmen</small>
   </div>
 
-  <footer>© 2026 Premium Social Media Service</footer>
+  <footer>© 2026 Selantris Social Media</footer>
 </div>
 
-<script>
-const overlay=document.getElementById("overlay");
-const main=document.getElementById("main");
-const music=document.getElementById("music");
-const images=document.querySelectorAll(".section img");
-const waBtn=document.getElementById("waBtn");
-
-function start(){
-  overlay.style.display="none";
-  main.classList.add("show");
-  music.volume=0.4;
-  music.play();
-}
-
-window.addEventListener("scroll",()=>{
-  images.forEach(img=>{
-    if(img.getBoundingClientRect().top < innerHeight-80){
-      img.classList.add("show-img");
-    }
-  });
-});
-
-// FADE OUT MUSIC SAAT KLIK WA
-waBtn.addEventListener("click",()=>{
-  let fade=setInterval(()=>{
-    if(music.volume>0.05){
-      music.volume-=0.02;
-    }else{
-      music.pause();
-      clearInterval(fade);
-    }
-  },120);
-});
-</script>
-<!-- WhatsApp Floating Button -->
+<!-- FLOATING WHATSAPP -->
 <a href="https://wa.me/6283124910460"
    target="_blank"
+   id="waFloat"
    style="
      position: fixed;
      bottom: 20px;
@@ -200,7 +193,51 @@ waBtn.addEventListener("click",()=>{
      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
      z-index: 999;
    ">
-   💬 Chat WhatsApp
+   💬 WhatsApp
 </a>
+
+<script>
+const overlay=document.getElementById("overlay");
+const main=document.getElementById("main");
+const music=document.getElementById("music");
+const images=document.querySelectorAll(".section img");
+const waBtn=document.getElementById("waBtn");
+const waFloat=document.getElementById("waFloat");
+
+waFloat.style.display="none";
+
+function start(){
+  overlay.style.display="none";
+  main.classList.add("show");
+  waFloat.style.display="block";
+  music.muted=false;
+  music.volume=0.4;
+  music.play().catch(()=>{});
+}
+
+window.addEventListener("scroll",()=>{
+  images.forEach(img=>{
+    if(img.getBoundingClientRect().top < innerHeight-80){
+      img.classList.add("show-img");
+    }
+  });
+});
+
+// FADE OUT MUSIC SAAT KLIK WA
+function fadeOutMusic(){
+  let fade=setInterval(()=>{
+    if(music.volume>0.05){
+      music.volume-=0.02;
+    }else{
+      music.pause();
+      clearInterval(fade);
+    }
+  },120);
+}
+
+waBtn.addEventListener("click",fadeOutMusic);
+waFloat.addEventListener("click",fadeOutMusic);
+</script>
+
 </body>
 </html>
