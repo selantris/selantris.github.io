@@ -12,292 +12,177 @@
 body{
   margin:0;
   font-family:'Segoe UI',Arial,sans-serif;
-  background:#0a0a12;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(255,210,125,.15),transparent 40%),
+    radial-gradient(circle at 80% 30%,rgba(255,255,255,.08),transparent 45%),
+    linear-gradient(180deg,#0a0a12,#000);
   color:#fff;
   overflow-x:hidden;
 }
 
-/* ===== GLITTER BACKGROUND ===== */
-.bg{
+/* GLITTER BACKGROUND */
+body::before{
+  content:"";
   position:fixed;
   inset:0;
-  overflow:hidden;
-  z-index:-3;
-  background:radial-gradient(circle at top,#1f1f3a,#0a0a12 70%);
-}
-.bg span{
-  position:absolute;
-  width:2px;
-  height:2px;
-  background:rgba(255,255,255,.9);
-  border-radius:50%;
-  animation:glitter linear infinite;
+  background-image:radial-gradient(#fff 1px,transparent 1px);
+  background-size:120px 120px;
+  opacity:.05;
+  animation:glitter 22s linear infinite;
+  pointer-events:none;
 }
 @keyframes glitter{
-  from{transform:translateY(0);opacity:0}
-  20%{opacity:1}
-  to{transform:translateY(-120vh);opacity:0}
+  from{background-position:0 0}
+  to{background-position:300px 400px}
 }
 
-/* ===== AURORA ===== */
-.aurora{
+/* TOP BAR */
+.topbar{
   position:fixed;
-  inset:-20%;
-  background:
-    radial-gradient(circle at 20% 30%, rgba(255,210,125,.28), transparent 40%),
-    radial-gradient(circle at 80% 60%, rgba(124,255,178,.25), transparent 45%),
-    radial-gradient(circle at 50% 90%, rgba(130,180,255,.25), transparent 45%);
-  animation:auroraMove 16s ease-in-out infinite alternate;
-  z-index:-2;
-}
-@keyframes auroraMove{
-  from{transform:translate(0,0) scale(1)}
-  to{transform:translate(-70px,-50px) scale(1.18)}
-}
-
-/* OVERLAY */
-.overlay{
-  position:fixed;
-  inset:0;
-  background:linear-gradient(180deg,#000,#0a0a12);
+  top:14px;
+  left:50%;
+  transform:translateX(-50%);
   display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
+  gap:10px;
   z-index:99;
 }
-.overlay h1{
-  font-size:32px;
-  background:linear-gradient(45deg,#fff,#ffd27d);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  animation:float 3s infinite;
-}
-.overlay button{
-  margin-top:25px;
-  padding:15px 45px;
-  border:none;
-  border-radius:60px;
-  font-weight:700;
-  background:linear-gradient(120deg,#ffd27d,#ffb347);
-  cursor:pointer;
-  animation:breath 2.5s infinite;
-}
 
-/* MAIN */
-.container{
-  max-width:760px;
-  margin:auto;
-  padding:22px;
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s ease;
+.badge{
+  background:rgba(0,0,0,.65);
+  padding:8px 16px;
+  border-radius:40px;
+  font-size:13px;
+  backdrop-filter:blur(8px);
+  box-shadow:0 0 15px rgba(255,210,125,.25);
 }
-.show{opacity:1;transform:none}
-
-.hero{text-align:center}
-.hero h2{font-size:28px}
-
-.trust{text-align:center;opacity:.75;margin:20px 0}
-
-/* URGENCY */
-.urgency{
-  text-align:center;
-  margin:15px 0 30px;
-  padding:12px;
-  border:1px dashed rgba(255,210,125,.5);
-  border-radius:14px;
-  font-size:14px;
-}
-.urgency b{color:var(--gold)}
-
-/* IMAGES */
-.section img{
-  width:100%;
-  border-radius:18px;
-  margin-bottom:22px;
-  opacity:0;
-  transform:translateY(30px);
-  transition:.7s ease;
-  box-shadow:
-    0 0 0 0 rgba(255,210,125,.6),
-    0 20px 50px rgba(0,0,0,.6);
-  cursor:pointer;
-}
-.section img.show-img{opacity:1;transform:none}
-.section img:hover{
-  transform:scale(1.04);
-  box-shadow:
-    0 0 20px rgba(255,210,125,.8),
-    0 20px 50px rgba(0,0,0,.7);
-}
-
-/* CTA */
-.cta{text-align:center;margin:60px 0}
-.cta a{
-  padding:18px 44px;
-  border-radius:50px;
-  background:linear-gradient(45deg,#25D366,#7CFFB2);
-  color:#000;
-  font-weight:800;
-  text-decoration:none;
-  animation:pulse 1.4s infinite;
-}
-
-/* FLOAT WA */
-#waFloat{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#25D366;
-  color:white;
-  padding:14px 18px;
-  border-radius:50px;
-  font-weight:bold;
-  text-decoration:none;
-  display:none;
-  z-index:999;
-}
+.badge b{color:var(--gold)}
 
 /* NOTIF */
 .notif{
   position:fixed;
-  bottom:90px;
-  left:20px;
-  background:rgba(0,0,0,.78);
-  border:1px solid rgba(255,210,125,.4);
-  padding:12px 16px;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(0,0,0,.75);
+  padding:12px 18px;
   border-radius:14px;
   font-size:13px;
   opacity:0;
-  transform:translateY(20px);
-  transition:.5s ease;
-  z-index:999;
+  pointer-events:none;
+  backdrop-filter:blur(8px);
+  transition:.6s ease;
+  z-index:99;
 }
-.notif.show{opacity:1;transform:none}
+.notif.show{
+  opacity:1;
+  bottom:36px;
+}
 
-/* ANIM */
-@keyframes float{50%{transform:translateY(-8px)}}
-@keyframes breath{50%{transform:scale(1.08)}}
-@keyframes pulse{50%{transform:scale(1.06)}}
+.container{
+  max-width:760px;
+  margin:auto;
+  padding:90px 22px 22px;
+}
+
+.section img{
+  width:100%;
+  border-radius:18px;
+  margin-bottom:22px;
+  box-shadow:0 25px 60px rgba(0,0,0,.55);
+}
 </style>
 </head>
 
 <body>
 
-<div class="bg" id="bg"></div>
-<div class="aurora"></div>
-
-<div class="overlay" id="overlay">
-  <h1>Waktunya Naik Level 🔥</h1>
-  <button onclick="start()">Masuk</button>
+<!-- TOP INFO -->
+<div class="topbar">
+  <div class="badge">⚡ Slot tersisa <b id="slot">13</b></div>
+  <div class="badge">👀 Dilihat <b id="viewer">9</b> orang</div>
 </div>
 
-<audio id="music" src="carol.mp3" loop muted></audio>
-<audio id="ping" src="https://assets.mixkit.co/sfx/preview/mixkit-interface-option-select-2573.mp3"></audio>
-
-<div class="container" id="main">
-  <div class="hero"><h2>Upgrade Sosial Media</h2></div>
-
-  <div class="trust">✔ Aman • Tanpa Login • Konsultasi Gratis</div>
-
-  <div class="urgency">
-    ⚡ Slot hari ini tersisa <b id="slot">7</b> order • Reset tiap hari
-  </div>
-
-  <div class="section">
-    <img src="instagram1.png" data-platform="Instagram" data-service="Followers">
-    <img src="instagram2.png" data-platform="Instagram" data-service="Likes">
-    <img src="f1.png" data-platform="Instagram" data-service="Followers">
-    <img src="f2.png" data-platform="TikTok" data-service="Followers">
-    <img src="f3.png" data-platform="X / Twitter" data-service="Followers">
-    <img src="t1.png" data-platform="TikTok" data-service="Followers">
-    <img src="t2.png" data-platform="TikTok" data-service="Likes">
-    <img src="t3.png" data-platform="TikTok" data-service="Views">
-    <img src="t4.png" data-platform="TikTok" data-service="Share">
-    <img src="x1.png" data-platform="X / Twitter" data-service="Followers">
-    <img src="x2.png" data-platform="X / Twitter" data-service="Likes">
-    <img src="y1.png" data-platform="YouTube" data-service="Subscribers">
-    <img src="y2.png" data-platform="YouTube" data-service="Views">
-    <img src="y3.png" data-platform="YouTube" data-service="Likes">
-    <img src="o1.png" data-platform="Instagram" data-service="Story Views">
-    <img src="o2.png" data-platform="Instagram" data-service="Reels Views">
-  </div>
-
-  <div class="cta">
-    <a href="https://wa.me/6283124910460">💬 WhatsApp Sekarang</a>
-  </div>
-</div>
-
-<a href="https://wa.me/6283124910460" id="waFloat">💬 WhatsApp</a>
+<!-- NOTIF -->
 <div class="notif" id="notif"></div>
 
+<div class="container">
+  <div class="section">
+    <img src="instagram1.png">
+    <img src="instagram2.png">
+    <img src="f1.png">
+    <img src="f2.png">
+    <img src="f3.png">
+    <img src="t1.png">
+    <img src="t2.png">
+    <img src="t3.png">
+    <img src="t4.png">
+    <img src="x1.png">
+    <img src="x2.png">
+    <img src="y1.png">
+    <img src="y2.png">
+    <img src="y3.png">
+    <img src="o1.png">
+    <img src="o2.png">
+  </div>
+</div>
+
 <script>
-/* GLITTER */
-const bg=document.getElementById("bg");
-for(let i=0;i<70;i++){
-  const s=document.createElement("span");
-  s.style.left=Math.random()*100+"%";
-  s.style.bottom=Math.random()*100+"%";
-  s.style.animationDuration=(4+Math.random()*6)+"s";
-  bg.appendChild(s);
+/* ================= SLOT PERSIST (ANTI RESET) ================= */
+const SLOT_KEY="slot_sisa";
+let slot = localStorage.getItem(SLOT_KEY)
+  ? parseInt(localStorage.getItem(SLOT_KEY))
+  : 13;
+
+if(isNaN(slot) || slot < 3) slot = 13;
+
+const slotEl=document.getElementById("slot");
+slotEl.textContent=slot;
+
+function reduceSlot(){
+  if(slot<=3) return;
+
+  slot--;
+  slotEl.textContent=slot;
+  localStorage.setItem(SLOT_KEY,slot);
+
+  setTimeout(reduceSlot,
+    (Math.floor(Math.random()*180)+120)*1000
+  );
 }
 
-const overlay=document.getElementById("overlay");
-const main=document.getElementById("main");
-const music=document.getElementById("music");
-const ping=document.getElementById("ping");
-const images=document.querySelectorAll(".section img");
-const waFloat=document.getElementById("waFloat");
+setTimeout(reduceSlot,
+  (Math.floor(Math.random()*120)+120)*1000
+);
+
+/* ================= VIEWER ================= */
+let viewer=9;
+const viewerEl=document.getElementById("viewer");
+
+setInterval(()=>{
+  viewer+=Math.floor(Math.random()*3)-1;
+  if(viewer<4) viewer=4;
+  if(viewer>17) viewer=17;
+  viewerEl.textContent=viewer;
+},8000);
+
+/* ================= CHECKOUT NOTIF ================= */
+const names=["Ari","Dina","Rizki","Putra","Salsa","Fajar","Rani","Yoga","Indah","Bayu"];
+const times=["1 menit","2 menit","5 menit","7 menit","10 menit"];
 const notif=document.getElementById("notif");
-const slot=document.getElementById("slot");
 
-function start(){
-  overlay.style.display="none";
-  main.classList.add("show");
-  waFloat.style.display="block";
-  music.muted=false;
-  music.volume=0.4;
-  music.play().catch(()=>{});
-  images.forEach((img,i)=>setTimeout(()=>img.classList.add("show-img"),i*120));
+function showNotif(){
+  const name=names[Math.floor(Math.random()*names.length)];
+  const time=times[Math.floor(Math.random()*times.length)];
+
+  notif.innerHTML=`✅ <b>${name}****</b> checkout • ${time} lalu`;
+  notif.classList.add("show");
+
+  setTimeout(()=>notif.classList.remove("show"),4500);
+
+  setTimeout(showNotif,
+    (Math.floor(Math.random()*150)+120)*1000
+  );
 }
-
-/* CLICK IMAGE */
-images.forEach(img=>{
-  img.onclick=()=>{
-    const msg=`Halo Admin
-
-Saya mau order layanan
-
-Platform : ${img.dataset.platform}
-Jenis Layanan : ${img.dataset.service}
-
-Username / Link Akun :
-Jumlah order :
-
-Terima kasih`;
-    window.open("https://wa.me/6283124910460?text="+encodeURIComponent(msg));
-  }
-});
-
-/* SOCIAL PROOF */
-const services=["Instagram Followers","TikTok Likes","YouTube Subs","Reels Views"];
-const times=["1 menit","2 menit","5 menit","10 menit"];
-setInterval(()=>{
-  if(Math.random()>0.6){
-    notif.textContent=`🔥 Baru checkout ${services[Math.floor(Math.random()*services.length)]} • ${times[Math.floor(Math.random()*times.length)]} lalu`;
-    notif.classList.add("show");
-    ping.play().catch(()=>{});
-    setTimeout(()=>notif.classList.remove("show"),4000);
-  }
-},35000);
-
-/* SLOT COUNT */
-let s=7;
-setInterval(()=>{
-  if(s>2 && Math.random()>0.6){s--;slot.textContent=s}
-},45000);
+setTimeout(showNotif,60000);
 </script>
 
 </body>
