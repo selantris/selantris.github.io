@@ -4,285 +4,177 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Naik Level Sosial Media</title>
-
 <meta name="description" content="Jasa upgrade tampilan sosial media agar lebih profesional, rapi, dan dipercaya.">
-<meta name="keywords" content="jasa sosial media, instagram branding, optimasi akun">
 
 <style>
 :root{--gold:#ffd27d}
 *{box-sizing:border-box}
-
 body{
-  margin:0;
-  font-family:'Segoe UI',Arial,sans-serif;
+  margin:0;font-family:'Segoe UI',Arial,sans-serif;
   background:radial-gradient(circle at top,#1f1f3a,#0a0a12 70%);
-  color:#fff;
+  color:#fff;overflow-x:hidden
 }
 
 /* OVERLAY */
-.overlay{
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at top,rgba(255,210,125,.15),transparent 45%),
-    linear-gradient(180deg,#000,#0a0a12);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  text-align:center;
-  z-index:99;
-}
-
-.overlay h1{
-  font-size:34px;
-  margin-bottom:14px;
-  background:linear-gradient(45deg,#fff,#ffd27d);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  animation:float 3s ease-in-out infinite;
-}
-
-.overlay p{opacity:.8}
-
-.overlay button{
-  margin-top:30px;
-  padding:16px 46px;
-  border:none;
-  border-radius:60px;
-  font-weight:700;
-  background:linear-gradient(120deg,#ffd27d,#ffb347,#ffd27d);
-  cursor:pointer;
-  animation:breath 2.4s ease-in-out infinite;
-}
+.overlay{position:fixed;inset:0;z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  background:radial-gradient(circle at top,rgba(255,210,125,.15),transparent 45%),linear-gradient(180deg,#000,#0a0a12)}
+.overlay h1{font-size:34px;background:linear-gradient(45deg,#fff,#ffd27d);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.overlay button{margin-top:20px;padding:14px 42px;border:0;border-radius:60px;font-weight:800;cursor:pointer;
+  background:linear-gradient(120deg,#ffd27d,#ffb347,#ffd27d)}
 
 /* MAIN */
-.container{
-  max-width:760px;
-  margin:auto;
-  padding:22px;
-  opacity:0;
-  transform:translateY(40px);
-  transition:1.2s ease;
-}
+.container{max-width:760px;margin:auto;padding:22px;opacity:0;transform:translateY(40px);transition:1.2s}
 .show{opacity:1;transform:none}
 
-.hero{text-align:center;margin-top:20px}
-.hero h2{font-size:30px}
-.hero span{opacity:.85}
-
-.trust{
-  text-align:center;
-  margin:28px 0;
-  font-size:14px;
-  opacity:.75;
-}
-
-.trust b{color:#ffd27d}
-
 .section img{
-  width:100%;
-  border-radius:18px;
-  margin-bottom:22px;
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s ease;
-  box-shadow:0 25px 60px rgba(0,0,0,.55);
-  cursor:pointer;
+  width:100%;border-radius:18px;margin-bottom:22px;opacity:0;transform:translateY(40px);
+  transition:.35s;box-shadow:0 25px 60px rgba(0,0,0,.55);cursor:pointer;position:relative
 }
 .section img.show-img{opacity:1;transform:none}
+.section img:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 30px 70px rgba(255,210,125,.35)}
+.section img:active{transform:scale(.96)}
 
-.cta{text-align:center;margin:60px 0}
-.cta a{
-  display:inline-block;
-  padding:18px 44px;
-  border-radius:50px;
-  background:linear-gradient(45deg,#25D366,#7CFFB2);
-  color:#000;
-  font-weight:800;
-  text-decoration:none;
-  animation:pulse 1.4s infinite;
-}
-.cta small{
-  display:block;
-  margin-top:10px;
-  opacity:.75;
-}
+/* TOAST */
+.toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%);
+  background:#25D366;color:#000;padding:12px 20px;border-radius:30px;font-weight:800;
+  opacity:0;transition:.35s;z-index:9999}
+.toast.show{opacity:1}
 
-footer{text-align:center;opacity:.45;font-size:12px;margin-bottom:26px}
+/* RIPPLE */
+.ripple{position:absolute;border-radius:50%;background:rgba(255,210,125,.5);transform:scale(0);animation:ripple .6s}
+@keyframes ripple{to{transform:scale(4);opacity:0}}
 
-@keyframes float{
-  0%{transform:translateY(0)}
-  50%{transform:translateY(-8px)}
-  100%{transform:translateY(0)}
+/* PARTICLES */
+#particles{position:fixed;inset:0;pointer-events:none;z-index:0}
+.particle{position:absolute;width:4px;height:4px;border-radius:50%;background:rgba(255,210,125,.6);animation:float 8s linear infinite}
+@keyframes float{from{transform:translateY(100vh)}to{transform:translateY(-10vh)}}
+
+/* FLYING ICONS */
+.fly{position:fixed;font-size:22px;opacity:.45;pointer-events:none;z-index:1}
+@keyframes fly-lr{from{transform:translateX(-20vw)}to{transform:translateX(120vw)}}
+@keyframes fly-rl{from{transform:translateX(120vw)}to{transform:translateX(-20vw)}}
+@keyframes fly-bt{from{transform:translateY(120vh)}to{transform:translateY(-20vh)}}
+@keyframes fly-tb{from{transform:translateY(-20vh)}to{transform:translateY(120vh)}}
+
+/* LIVE ORDER POPUP */
+.live{
+  position:fixed;left:16px;bottom:16px;max-width:260px;
+  background:#111;border:1px solid rgba(255,210,125,.35);
+  border-radius:14px;padding:12px 14px;box-shadow:0 20px 40px rgba(0,0,0,.5);
+  opacity:0;transform:translateY(10px);transition:.4s;z-index:9998
 }
-@keyframes breath{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.08)}
-  100%{transform:scale(1)}
-}
-@keyframes pulse{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.06)}
-  100%{transform:scale(1)}
-}
+.live.show{opacity:1;transform:none}
+.live b{color:#ffd27d}
+.live small{opacity:.7}
 </style>
 </head>
 
 <body>
 
-<!-- OVERLAY -->
 <div class="overlay" id="overlay">
   <h1>Waktunya bikin akunmu naik level 🔥</h1>
-  <p>Tampilan rapi bikin akun lebih dipercaya</p>
   <button onclick="start()">Masuk</button>
 </div>
 
-<!-- MUSIC -->
 <audio id="music" src="carol.mp3" loop muted></audio>
 
-<!-- MAIN CONTENT -->
+<div id="particles"></div>
+
 <div class="container" id="main">
-
-  <div class="hero">
-    <h2>Upgrade Tampilan Sosial Mediamu</h2>
-    <span>
-      Akun yang rapi terlihat lebih profesional, nyaman dilihat,  
-      dan lebih gampang dapet kepercayaan.
-    </span>
-  </div>
-
-  <div class="trust">
-    ✔ Dipakai oleh <b>akun UMKM & personal brand</b><br>
-    ✔ Aman • Tanpa login akun • Konsultasi GRATIS
-  </div>
-
   <div class="section">
-    <!-- INSTAGRAM -->
     <img src="instagram1.png" data-platform="Instagram" data-service="Followers">
     <img src="instagram2.png" data-platform="Instagram" data-service="Likes">
-
-    <!-- FOLLOWERS -->
-    <img src="f1.png" data-platform="Instagram" data-service="Followers">
-    <img src="f2.png" data-platform="TikTok" data-service="Followers">
-    <img src="f3.png" data-platform="X / Twitter" data-service="Followers">
-
-    <!-- TIKTOK -->
     <img src="t1.png" data-platform="TikTok" data-service="Followers">
     <img src="t2.png" data-platform="TikTok" data-service="Likes">
-    <img src="t3.png" data-platform="TikTok" data-service="Views">
-    <img src="t4.png" data-platform="TikTok" data-service="Share">
-
-    <!-- X -->
-    <img src="x1.png" data-platform="X / Twitter" data-service="Followers">
-    <img src="x2.png" data-platform="X / Twitter" data-service="Likes">
-
-    <!-- YOUTUBE -->
     <img src="y1.png" data-platform="YouTube" data-service="Subscribers">
-    <img src="y2.png" data-platform="YouTube" data-service="Views">
-    <img src="y3.png" data-platform="YouTube" data-service="Likes">
-
-    <!-- OTHERS -->
-    <img src="o1.png" data-platform="Instagram" data-service="Story Views">
-    <img src="o2.png" data-platform="Instagram" data-service="Reels Views">
   </div>
-
-  <div class="cta">
-    <a href="https://wa.me/6283124910460" target="_blank" id="waBtn">
-      💬 Konsultasi GRATIS via WhatsApp
-    </a>
-    <small>Fast response • Bisa tanya dulu tanpa komitmen</small>
-  </div>
-
-  <footer>© 2026 Selantris Social Media</footer>
 </div>
 
-<!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/6283124910460"
-   target="_blank"
-   id="waFloat"
-   style="
-     position: fixed;
-     bottom: 20px;
-     right: 20px;
-     background: #25D366;
-     color: white;
-     padding: 14px 18px;
-     border-radius: 50px;
-     text-decoration: none;
-     font-weight: bold;
-     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-     z-index: 999;
-   ">
-   💬 WhatsApp
-</a>
+<div class="toast" id="toast">📩 Mengarahkan ke WhatsApp...</div>
+<div class="live" id="live"></div>
 
 <script>
 const overlay=document.getElementById("overlay");
 const main=document.getElementById("main");
 const music=document.getElementById("music");
-const images=document.querySelectorAll(".section img");
-const waBtn=document.getElementById("waBtn");
-const waFloat=document.getElementById("waFloat");
+const imgs=[...document.querySelectorAll(".section img")];
+const toast=document.getElementById("toast");
+const particles=document.getElementById("particles");
+const live=document.getElementById("live");
 
-waFloat.style.display="none";
-
+/* START */
 function start(){
-  overlay.style.display="none";
-  main.classList.add("show");
-  waFloat.style.display="block";
-  music.muted=false;
-  music.volume=0.4;
-  music.play().catch(()=>{});
+  overlay.style.display="none"; main.classList.add("show");
+  music.muted=false; music.volume=.4; music.play().catch(()=>{});
 }
 
-window.addEventListener("scroll",()=>{
-  images.forEach(img=>{
-    if(img.getBoundingClientRect().top < innerHeight-80){
-      img.classList.add("show-img");
-    }
-  });
-});
+/* SCROLL */
+addEventListener("scroll",()=>imgs.forEach(i=>{
+  if(i.getBoundingClientRect().top<innerHeight-80)i.classList.add("show-img")
+}));
 
-// FADE OUT MUSIC
-function fadeOutMusic(){
-  let fade=setInterval(()=>{
-    if(music.volume>0.05){
-      music.volume-=0.02;
-    }else{
-      music.pause();
-      clearInterval(fade);
-    }
-  },120);
-}
+/* MUSIC FADE */
+function fadeOut(){let f=setInterval(()=>{music.volume>0.05?music.volume-=.02:(music.pause(),clearInterval(f))},100)}
 
-// CLICK IMAGE → WA TEMPLATE
-images.forEach(img=>{
-  img.addEventListener("click",()=>{
-    fadeOutMusic();
-    const platform=img.dataset.platform;
-    const service=img.dataset.service;
-
-    const message=`Halo Admin SosialMedia_Up
+/* IMAGE CLICK */
+imgs.forEach(img=>{
+  img.onclick=e=>{
+    fadeOut(); if(navigator.vibrate) navigator.vibrate(40);
+    toast.classList.add("show"); setTimeout(()=>toast.classList.remove("show"),1200);
+    const r=document.createElement("span"); r.className="ripple";
+    r.style.left=e.offsetX+"px"; r.style.top=e.offsetY+"px"; img.appendChild(r);
+    setTimeout(()=>r.remove(),600);
+    const msg=`Halo Admin SosialMedia_Up 
 
 Saya mau order layanan
 
-Platform : ${platform}
-Jenis Layanan : ${service}
+Platform : ${img.dataset.platform}
+Jenis Layanan : ${img.dataset.service}
 
 Username / Link Akun :
 Jumlah order :
 
 Terima kasih `;
-
-    const url=`https://wa.me/6283124910460?text=${encodeURIComponent(message)}`;
-    window.open(url,"_blank");
-  });
+    setTimeout(()=>open("https://wa.me/6283124910460?text="+encodeURIComponent(msg),"_blank"),900);
+  }
 });
 
-waBtn.addEventListener("click",fadeOutMusic);
-waFloat.addEventListener("click",fadeOutMusic);
+/* PARTICLES */
+for(let i=0;i<30;i++){
+  const p=document.createElement("div"); p.className="particle";
+  p.style.left=Math.random()*100+"%";
+  p.style.animationDuration=(6+Math.random()*6)+"s";
+  particles.appendChild(p);
+}
+
+/* FLYING ICONS */
+const icons=["✈️","💬","📦","🚀"];
+const anims=["fly-lr","fly-rl","fly-bt","fly-tb"];
+function spawnFly(){
+  const f=document.createElement("div"); f.className="fly";
+  f.textContent=icons[Math.floor(Math.random()*icons.length)];
+  const a=anims[Math.floor(Math.random()*anims.length)];
+  Object.assign(f.style, a.includes("lr")||a.includes("rl")
+    ? {top:(10+Math.random()*60)+"%", left:a==="fly-lr"?"-20vw":"120vw"}
+    : {left:(5+Math.random()*90)+"%", top:a==="fly-bt"?"120vh":"-20vh"}
+  );
+  f.style.animation=`${a} ${12+Math.random()*10}s linear`;
+  document.body.appendChild(f); setTimeout(()=>f.remove(),20000);
+}
+setInterval(spawnFly,6000);
+
+/* LIVE ORDER POPUP */
+const samples=[
+  "Followers Instagram","Likes Instagram","Followers TikTok","Views TikTok","Subscribers YouTube"
+];
+function showLive(){
+  live.innerHTML=`<b>${samples[Math.floor(Math.random()*samples.length)]}</b><br>
+  <small>Order masuk • ${1+Math.floor(Math.random()*5)} menit lalu</small>`;
+  live.classList.add("show");
+  setTimeout(()=>live.classList.remove("show"),3500);
+}
+setInterval(showLive,7000);
 </script>
 
 </body>
-</html>
+  </html>
