@@ -20,7 +20,7 @@ body{
   overflow-x:hidden;
 }
 
-/* GLITTER BACKGROUND */
+/* GLITTER */
 body::before{
   content:"";
   position:fixed;
@@ -46,7 +46,6 @@ body::before{
   gap:10px;
   z-index:99;
 }
-
 .badge{
   background:rgba(0,0,0,.65);
   padding:8px 16px;
@@ -57,7 +56,6 @@ body::before{
 }
 .badge b{color:var(--gold)}
 
-/* NOTIF */
 .notif{
   position:fixed;
   bottom:20px;
@@ -68,15 +66,10 @@ body::before{
   border-radius:14px;
   font-size:13px;
   opacity:0;
-  pointer-events:none;
-  backdrop-filter:blur(8px);
-  transition:.6s ease;
+  transition:.6s;
   z-index:99;
 }
-.notif.show{
-  opacity:1;
-  bottom:36px;
-}
+.notif.show{opacity:1;bottom:36px}
 
 .container{
   max-width:760px;
@@ -89,100 +82,121 @@ body::before{
   border-radius:18px;
   margin-bottom:22px;
   box-shadow:0 25px 60px rgba(0,0,0,.55);
+  cursor:pointer;
+  transition:.3s;
+}
+.section img:hover{
+  transform:scale(1.02);
+  box-shadow:0 0 25px rgba(255,210,125,.35);
 }
 </style>
 </head>
 
 <body>
 
-<!-- TOP INFO -->
 <div class="topbar">
   <div class="badge">⚡ Slot tersisa <b id="slot">13</b></div>
   <div class="badge">👀 Dilihat <b id="viewer">9</b> orang</div>
 </div>
 
-<!-- NOTIF -->
 <div class="notif" id="notif"></div>
 
 <div class="container">
   <div class="section">
-    <img src="instagram1.png">
-    <img src="instagram2.png">
-    <img src="f1.png">
-    <img src="f2.png">
-    <img src="f3.png">
-    <img src="t1.png">
-    <img src="t2.png">
-    <img src="t3.png">
-    <img src="t4.png">
-    <img src="x1.png">
-    <img src="x2.png">
-    <img src="y1.png">
-    <img src="y2.png">
-    <img src="y3.png">
-    <img src="o1.png">
-    <img src="o2.png">
+    <!-- INSTAGRAM -->
+    <img src="instagram1.png" data-platform="Instagram" data-service="Followers">
+    <img src="instagram2.png" data-platform="Instagram" data-service="Likes">
+
+    <!-- FOLLOWERS -->
+    <img src="f1.png" data-platform="Instagram" data-service="Followers">
+    <img src="f2.png" data-platform="TikTok" data-service="Followers">
+    <img src="f3.png" data-platform="X / Twitter" data-service="Followers">
+
+    <!-- TIKTOK -->
+    <img src="t1.png" data-platform="TikTok" data-service="Followers">
+    <img src="t2.png" data-platform="TikTok" data-service="Likes">
+    <img src="t3.png" data-platform="TikTok" data-service="Views">
+    <img src="t4.png" data-platform="TikTok" data-service="Share">
+
+    <!-- X -->
+    <img src="x1.png" data-platform="X / Twitter" data-service="Followers">
+    <img src="x2.png" data-platform="X / Twitter" data-service="Likes">
+
+    <!-- YOUTUBE -->
+    <img src="y1.png" data-platform="YouTube" data-service="Subscribers">
+    <img src="y2.png" data-platform="YouTube" data-service="Views">
+    <img src="y3.png" data-platform="YouTube" data-service="Likes">
+
+    <!-- OTHERS -->
+    <img src="o1.png" data-platform="Instagram" data-service="Story Views">
+    <img src="o2.png" data-platform="Instagram" data-service="Reels Views">
   </div>
 </div>
 
 <script>
-/* ================= SLOT PERSIST (ANTI RESET) ================= */
+/* SLOT PERSIST */
 const SLOT_KEY="slot_sisa";
-let slot = localStorage.getItem(SLOT_KEY)
-  ? parseInt(localStorage.getItem(SLOT_KEY))
-  : 13;
-
-if(isNaN(slot) || slot < 3) slot = 13;
-
+let slot=parseInt(localStorage.getItem(SLOT_KEY))||13;
+if(slot<3) slot=13;
 const slotEl=document.getElementById("slot");
 slotEl.textContent=slot;
 
 function reduceSlot(){
   if(slot<=3) return;
-
   slot--;
   slotEl.textContent=slot;
   localStorage.setItem(SLOT_KEY,slot);
-
-  setTimeout(reduceSlot,
-    (Math.floor(Math.random()*180)+120)*1000
-  );
+  setTimeout(reduceSlot,(Math.random()*180+120)*1000);
 }
+setTimeout(reduceSlot,(Math.random()*120+120)*1000);
 
-setTimeout(reduceSlot,
-  (Math.floor(Math.random()*120)+120)*1000
-);
-
-/* ================= VIEWER ================= */
+/* VIEWER */
 let viewer=9;
 const viewerEl=document.getElementById("viewer");
-
 setInterval(()=>{
   viewer+=Math.floor(Math.random()*3)-1;
-  if(viewer<4) viewer=4;
-  if(viewer>17) viewer=17;
+  viewer=Math.min(17,Math.max(4,viewer));
   viewerEl.textContent=viewer;
 },8000);
 
-/* ================= CHECKOUT NOTIF ================= */
+/* NOTIF CHECKOUT */
+const notif=document.getElementById("notif");
 const names=["Ari","Dina","Rizki","Putra","Salsa","Fajar","Rani","Yoga","Indah","Bayu"];
 const times=["1 menit","2 menit","5 menit","7 menit","10 menit"];
-const notif=document.getElementById("notif");
-
 function showNotif(){
-  const name=names[Math.floor(Math.random()*names.length)];
-  const time=times[Math.floor(Math.random()*times.length)];
-
-  notif.innerHTML=`✅ <b>${name}****</b> checkout • ${time} lalu`;
+  const n=names[Math.floor(Math.random()*names.length)];
+  const t=times[Math.floor(Math.random()*times.length)];
+  notif.innerHTML=`✅ <b>${n}****</b> checkout • ${t} lalu`;
   notif.classList.add("show");
-
   setTimeout(()=>notif.classList.remove("show"),4500);
-
-  setTimeout(showNotif,
-    (Math.floor(Math.random()*150)+120)*1000
-  );
+  setTimeout(showNotif,(Math.random()*150+120)*1000);
 }
 setTimeout(showNotif,60000);
+
+/* CLICK FOTO → WA TEMPLATE */
+document.querySelectorAll(".section img").forEach(img=>{
+  img.addEventListener("click",()=>{
+    const platform=img.dataset.platform;
+    const service=img.dataset.service;
+
+    const msg=`Halo Admin
+
+Saya mau order layanan
+
+Platform : ${platform}
+Jenis Layanan : ${service}
+
+Username / Link Akun :
+Jumlah order :
+
+Terima kasih `;
+
+    window.open(
+      "https://wa.me/6283124910460?text="+encodeURIComponent(msg),
+      "_blank"
+    );
+  });
+});
 </script>
 
 </body>
