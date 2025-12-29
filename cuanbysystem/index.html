@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CUAN BY SYSTEM — Member Area</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#080808;
+  color:#fff;
+  overflow-x:hidden;
+}
+.container{
+  max-width:960px;
+  margin:auto;
+  padding:24px;
+}
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  text-align:center;
+}
+.hero h1{
+  font-size:34px;
+  margin-bottom:10px;
+}
+.hero p{
+  color:#aaa;
+  font-size:16px;
+}
+.highlight{color:#00ff9c}
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  background:#00ff9c;
+  color:#000;
+  padding:16px 28px;
+  border-radius:50px;
+  font-weight:bold;
+  text-decoration:none;
+}
+.section{
+  background:#121212;
+  border-radius:22px;
+  padding:30px;
+  margin:60px 0;
+  opacity:0;
+  transform:translateY(60px);
+  transition:all .9s cubic-bezier(.2,.8,.2,1);
+}
+.section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+.section h2{
+  text-align:center;
+  margin-top:0;
+}
+.card{
+  background:#0e0e0e;
+  border-radius:14px;
+  padding:18px;
+  margin-top:15px;
+}
+.real{
+  background:linear-gradient(135deg,#0f1f19,#0b1512);
+  border-left:5px solid #00ff9c;
+  padding:18px;
+  border-radius:12px;
+  margin-top:18px;
+}
+.flow{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:14px;
+  margin-top:20px;
+}
+.flow div{
+  background:#0e0e0e;
+  padding:18px;
+  border-radius:14px;
+  text-align:center;
+}
+.progress-wrap{
+  margin-top:25px;
+}
+.progress{
+  width:100%;
+  height:10px;
+  background:#1c1c1c;
+  border-radius:10px;
+  overflow:hidden;
+}
+.progress span{
+  display:block;
+  height:100%;
+  width:0;
+  background:#00ff9c;
+  transition:width 1.5s ease;
+}
+.footer{
+  text-align:center;
+  color:#666;
+  font-size:12px;
+  padding:40px 0;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Selamat Datang di<br><span class="highlight">CUAN BY SYSTEM</span></h1>
+  <p>
+    Kalau kamu bisa baca halaman ini,<br>
+    artinya kamu <b>SUDAH BAYAR</b> dan <b>AKSES LANGSUNG TERBUKA</b>.
+  </p>
+  <a href="#mulai" class="btn">Mulai Sekarang ↓</a>
+</section>
+
+<!-- MODUL 1 -->
+<div id="mulai" class="section">
+<h2>MODUL 1 — Kenyataan yang Jarang Dibilang</h2>
+<p>
+Mayoritas orang bukan gagal karena bodoh,<br>
+tapi karena hidup dari <b>tukar waktu dengan uang</b>.
+</p>
+
+<div class="real">
+<b>CONTOH NYATA:</b><br>
+Kerja 8–12 jam sehari.<br>
+Capek? Iya.<br>
+Uang sisa? Hampir nol.<br><br>
+Besok? Mulai dari nol lagi.
+</div>
+
+<p>
+Ini bukan salah orangnya.<br>
+Ini salah <b>SISTEM HIDUP</b>-nya.
+</p>
+</div>
+
+<!-- MODUL 2 -->
+<div class="section">
+<h2>MODUL 2 — Kenapa Sistem Selalu Menang</h2>
+
+<div class="card">
+Sistem = sesuatu yang:
+<ul>
+<li>Dibuat sekali</li>
+<li>Dipakai berulang</li>
+<li>Tetap jalan walau kamu capek</li>
+</ul>
+</div>
+
+<div class="real">
+<b>REAL CASE:</b><br>
+Produk digital Rp50.000<br>
+Terjual 2x / hari = Rp100.000<br>
+30 hari = Rp3.000.000<br><br>
+Bukan flexing.<br>
+Ini <b>MATEMATIKA</b>.
+</div>
+</div>
+
+<!-- MODUL 3 -->
+<div class="section">
+<h2>MODUL 3 — Sistem yang Sedang Kamu Pakai</h2>
+
+<div class="flow">
+<div>Orang klik link</div>
+<div>Orang bayar</div>
+<div>Halaman ini kebuka</div>
+<div>Kamu gak jelasin apa-apa</div>
+</div>
+
+<p style="margin-top:20px">
+Kalau kamu sampai sini,<br>
+artinya <b>sistemnya BEKERJA</b>.
+</p>
+</div>
+
+<!-- MODUL 4 -->
+<div class="section">
+<h2>MODUL 4 — Dari Mana Uang Datang</h2>
+
+<div class="card">
+Bukan dari pamer.<br>
+Bukan dari sok jago.
+</div>
+
+<div class="real">
+<b>CONTOH PALING REAL:</b><br>
+Status WhatsApp:<br>
+“Dulu cari duit ribet. Sekarang sistem jalan sendiri.”<br><br>
+➡ tempel link web ini
+</div>
+</div>
+
+<!-- MODUL 5 -->
+<div class="section">
+<h2>MODUL 5 — Kenapa Orang MAU Bayar</h2>
+
+<div class="card">
+Orang beli karena:
+<ul>
+<li>Gampang dipahami</li>
+<li>Masuk akal</li>
+<li>Bisa langsung dipakai</li>
+</ul>
+</div>
+
+<div class="real">
+<b>FAKTA PSIKOLOGI:</b><br>
+Orang lebih percaya sesuatu yang<br>
+<b>SEDERHANA TAPI JALAN</b><br>
+daripada yang ribet tapi teoritis.
+</div>
+</div>
+
+<!-- MODUL 6 -->
+<div class="section">
+<h2>MODUL 6 — Cara Naik Level</h2>
+
+<div class="flow">
+<div>Duplikasi sistem</div>
+<div>Bikin produk ke-2</div>
+<div>Naikkan harga</div>
+<div>Ulangi</div>
+</div>
+
+<div class="progress-wrap">
+<p>Potensi pertumbuhan kamu:</p>
+<div class="progress"><span></span></div>
+</div>
+
+<div class="real">
+Uang besar bukan dari satu ledakan,<br>
+tapi dari <b>pengulangan kecil yang konsisten</b>.
+</div>
+</div>
+
+<!-- PENUTUP -->
+<div class="section">
+<h2>PENUTUP (JUJUR)</h2>
+<p>
+Kalau kamu cuma baca →<br>
+<b>hidup kamu tetap sama</b>.
+</p>
+<p>
+Kalau kamu TERAPKAN →<br>
+pelan, tapi <b>NAIK LEVEL</b>.
+</p>
+
+<p style="text-align:center">
+Ini bukan janji.<br>
+Ini <b>POLA HIDUP</b>.
+</p>
+
+<a class="btn" href="https://wa.me/6282387461860">
+Chat Aku di WhatsApp
+</a>
+</div>
+
+<div class="footer">
+© CUAN BY SYSTEM — Member Area
+</div>
+
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('show');
+      const bar = e.target.querySelector('.progress span');
+      if(bar){ bar.style.width = "85%"; }
+    }
+  });
+},{threshold:0.25});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
